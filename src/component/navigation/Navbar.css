@@ -37,4 +37,7 @@
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    list-style: none;
+    padding-left: 50px;
 }
