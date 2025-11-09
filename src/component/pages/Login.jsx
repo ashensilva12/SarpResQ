@@ -17,7 +17,7 @@ function Login() {
                     <td><input type="password" name="password" required/></td>
                 </tr>
                 <tr>
-                    <td colSpan="2"><button type="submit" >Login</button></td>
+                    <td colSpan="2" ><button type="submit">Login</button></td>
                 </tr>
             </table>
         </form>
