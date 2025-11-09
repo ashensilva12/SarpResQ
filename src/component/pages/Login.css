@@ -17,3 +17,11 @@
     padding: 0 16px;
     border-radius: 15px;
 }
+.loginheader{
+    padding-bottom: 50%;
+    padding-left: 40%;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    padding-top: 20px;
+}
