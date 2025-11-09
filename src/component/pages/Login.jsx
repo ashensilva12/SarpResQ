@@ -10,11 +10,11 @@ function Login() {
             <table className='table'>
                 <tr>
                     <td>Username:</td>
-                    <td className="textbox"><input type="text" name="username" required/></td>
+                    <td><input type="email" name="username" required/></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td className="textbox"><input type="password" name="password" required/></td>
+                    <td><input type="password" name="password" required/></td>
                 </tr>
                 <tr>
                     <td colSpan="2"><button type="submit">Login</button></td>
