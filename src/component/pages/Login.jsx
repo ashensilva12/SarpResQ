@@ -6,7 +6,10 @@ function Login() {
         <form>
             <h2>Login</h2>
             <table>
-                
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="username" /></td>
+                </tr>
             </table>
         </form>
     </div>
