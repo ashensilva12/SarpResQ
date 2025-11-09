@@ -2,7 +2,7 @@ import React from 'react'
 import './Login.css'
 function Login() {
   return (
-    <div>
+    <div className="loginbox">
         <form>
             <h2 className='title'>Login</h2>
             <table className='table'>
