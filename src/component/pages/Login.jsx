@@ -3,8 +3,10 @@ import './Login.css'
 function Login() {
   return (
     <div className="loginbox">
-        <form>
+        <div className="loginheader">
             <h2 className='title'>Login</h2>
+        </div>
+        <form>
             <table className='table'>
                 <tr>
                     <td>Username:</td>
