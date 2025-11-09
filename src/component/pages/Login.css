@@ -55,3 +55,19 @@ input[type="password"]{
     border: 1px solid white;
     padding: 2px 20px;
 }
+td{
+    font-size: 1.5rem;
+}
+input::placeholder{
+    font-weight: bold;
+}
+button[type="submit"]{
+    text-decoration: none;
+    color:white;
+    border-radius: 40px;
+    background-color: red;
+    padding:1.2vh 15%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border: none;
+}
