@@ -8,11 +8,14 @@ function Login() {
             <table>
                 <tr>
                     <td>Username:</td>
-                    <td><input type="text" name="username" /></td>
+                    <td><input type="text" name="username" required/></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="password" name="password" /></td>
+                    <td><input type="password" name="password" required/></td>
+                </tr>
+                <tr>
+                    <td colSpan="2"><button type="submit">Login</button></td>
                 </tr>
             </table>
         </form>
