@@ -23,6 +23,9 @@ function Login() {
                 <tr>
                     <td colSpan="2" ><button type="submit">LOGIN</button></td>
                 </tr>
+                <tr>
+                    <td colSpan="2" >Don't have an account? <a href="/register">Register</a></td>
+                </tr>
             </table>
         </form>
         
