@@ -1,8 +1,11 @@
 import React from 'react'
 import './Login.css'
+import loginImage from '../../assets/login.jpg';
 function Login() {
   return (
+   
     <div className="loginbox">
+        
         <div className="loginheader">
             <h2 className='title'>Login</h2>
         </div>
@@ -16,11 +19,13 @@ function Login() {
                     <td>Password:</td>
                     <td><input type="password" name="password" placeholder="&#128274; Password" required/></td>
                 </tr>
+                
                 <tr>
                     <td colSpan="2" ><button type="submit">LOGIN</button></td>
                 </tr>
             </table>
         </form>
+        
     </div>
   )
 }
