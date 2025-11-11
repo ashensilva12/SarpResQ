@@ -92,6 +92,10 @@ button[type="submit"]:hover{
     background-color: rgb(226, 15, 15);
     border: 1px solid white;
 }
+.table tr:last-child td{
+    font-size: medium;
+    padding-top: 12px;
+}
 a{
     color: tomato;
     text-decoration: none;
