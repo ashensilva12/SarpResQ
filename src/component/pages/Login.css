@@ -92,3 +92,8 @@ button[type="submit"]:hover{
     background-color: rgb(226, 15, 15);
     border: 1px solid white;
 }
+a{
+    color: tomato;
+    text-decoration: none;
+    font-size: medium;
+}
