@@ -3,10 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Navbar from './component/pages/Login'
 import Login from './component/pages/Login'
+import { BrowserRouter as Router,Route,Switch }from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div>
       <Login/>
