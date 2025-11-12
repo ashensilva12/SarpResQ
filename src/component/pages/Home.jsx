@@ -25,6 +25,11 @@ function Home() {
                     <h3>Report Snake</h3>
                     <p>Quickly notify rescuers when a snake is spotted in your area.</p>
                 </div>
+                <div className="feature_card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2966/2966488.png" alt="Hospital" />
+                    <h3>Hospital Availability</h3>
+                    <p>Find hospitals that have antivenom and emergency treatment ready.</p>
+                </div>
             </section>
         </div>
     </div>
