@@ -12,6 +12,10 @@ function Register() {
                     <td>Username:</td>
                     <td><input type="email" name="username"placeholder="&#9993; Email" required/></td>
                 </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" placeholder="&#128274; Password" required/></td>
+                </tr>
             </table>
         </form>
     </div>
