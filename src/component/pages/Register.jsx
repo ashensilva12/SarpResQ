@@ -1,6 +1,7 @@
 import React from 'react'
 import './Login.css'
 import loginImage from '../../assets/login.jpg';
+import { Link } from 'react-router-dom';
 
 function Register() {
   return (
@@ -24,6 +25,9 @@ function Register() {
                 </tr>
                 <tr>
                     <td colSpan="2" ><button type="submit">Register</button></td>
+                </tr>
+                <tr>
+                    <td colSpan="2" style={{textAlign: 'center', paddingTop: '12px'}}>Already have an account? <Link to="/">Login</Link></td>
                 </tr>
             </table>
         </form>
