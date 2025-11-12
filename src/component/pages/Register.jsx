@@ -8,7 +8,10 @@ function Register() {
         </div>
         <form>
             <table className='table'>
-                
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="email" name="username"placeholder="&#9993; Email" required/></td>
+                </tr>
             </table>
         </form>
     </div>
