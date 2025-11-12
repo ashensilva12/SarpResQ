@@ -36,6 +36,14 @@ function Home() {
                     <p>Learn to identify venomous and non-venomous snakes safely.</p>
                 </div>
             </section>
+            <section className='aboutus'>
+                <h2>About SarpResQ</h2>
+                <p>
+                    SarpResQ connects people, hospitals, and wildlife rescuers to create a safer
+                    environment. Our mission is to reduce panic, improve awareness, and ensure
+                    quick medical response during snake encounters.
+                </p>
+            </section>
         </div>
     </div>
   )
