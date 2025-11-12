@@ -1,7 +1,8 @@
 import React from 'react'
 import './Login.css'
 import loginImage from '../../assets/login.jpg';
-import pages from '/pages/Register'; 
+import { Link } from 'react-router-dom';
+
 function Login() {
   return (
    
@@ -25,7 +26,7 @@ function Login() {
                     <td colSpan="2" ><button type="submit">LOGIN</button></td>
                 </tr>
                 <tr>
-                    <td colSpan="2" >Don't have an account? <a href="/register">Register</a></td>
+                    <td colSpan="2" >Don't have an account? <Link to="/Register">Register</Link></td>
                 </tr>
             </table>
         </form>
