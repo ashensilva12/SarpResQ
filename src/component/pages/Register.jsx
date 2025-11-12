@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './Login.css'
 function Register() {
   return (
     <div className="loginbox">
