@@ -11,7 +11,7 @@ function Home() {
         <div className='home'>
             <section className="main">
                 <div className='main_content'>
-                    
+                    <h1>Snake Awareness & Rescue Platform</h1>
                 </div>
             </section>
         </div>
