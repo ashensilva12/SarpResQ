@@ -20,6 +20,9 @@ function Register() {
                     <td>Confirm Password:</td>
                     <td><input type="password" name="confirmPassword" placeholder="&#128274; Confirm Password" required/></td>
                 </tr>
+                <tr>
+                    <td colSpan="2" ><button type="submit">Register</button></td>
+                </tr>
             </table>
         </form>
     </div>
