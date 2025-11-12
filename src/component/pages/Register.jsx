@@ -1,5 +1,7 @@
 import React from 'react'
 import './Login.css'
+import loginImage from '../../assets/login.jpg';
+
 function Register() {
   return (
     <div className="loginbox">
