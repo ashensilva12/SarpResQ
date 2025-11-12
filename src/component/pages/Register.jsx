@@ -7,7 +7,9 @@ function Register() {
             <h2 className='title'>Register</h2>
         </div>
         <form>
-            
+            <table className='table'>
+                
+            </table>
         </form>
     </div>
   )
