@@ -19,6 +19,11 @@ function Home() {
                     <button className="btn-hospitals">Find Hospitals</button>
                 </div>
             </section>
+            <section className="features">
+                <div className="feature_card">
+                    
+                </div>
+            </section>
         </div>
     </div>
   )
