@@ -21,7 +21,9 @@ function Home() {
             </section>
             <section className="features">
                 <div className="feature_card">
-                    
+                    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Report" />
+                    <h3>Report Snake</h3>
+                    <p>Quickly notify rescuers when a snake is spotted in your area.</p>
                 </div>
             </section>
         </div>
