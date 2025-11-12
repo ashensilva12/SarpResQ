@@ -6,6 +6,9 @@ function Register() {
         <div className="loginheader">
             <h2 className='title'>Register</h2>
         </div>
+        <form>
+            
+        </form>
     </div>
   )
 }
