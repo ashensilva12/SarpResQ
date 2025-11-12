@@ -12,10 +12,14 @@ function Home() {
             <section className="main">
                 <div className='main_content'>
                     <h1>Snake Awareness & Rescue Platform</h1>
+                    <p>Helping communities stay safe from snake encounters — report, locate, and rescue safely with SarpResQ.</p>
                 </div>
             </section>
         </div>
-    
+        <div className="main_buttons">
+            <button className="btn-report">Report a Snake</button>
+            <button className="btn-hospitals">Find Hospitals</button>
+        </div>
     </div>
   )
 }
