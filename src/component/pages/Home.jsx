@@ -14,11 +14,11 @@ function Home() {
                     <h1>Snake Awareness & Rescue Platform</h1>
                     <p>Helping communities stay safe from snake encounters — report, locate, and rescue safely with SarpResQ.</p>
                 </div>
+                <div className="main_buttons">
+                    <button className="btn-report">Report a Snake</button>
+                    <button className="btn-hospitals">Find Hospitals</button>
+                </div>
             </section>
-        </div>
-        <div className="main_buttons">
-            <button className="btn-report">Report a Snake</button>
-            <button className="btn-hospitals">Find Hospitals</button>
         </div>
     </div>
   )
