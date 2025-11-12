@@ -3,7 +3,7 @@
     padding:0;
     
 }
-body{
+.auth-page{
     background-image: url('../../assets/login.jpg');
     background-size: cover;
     background-position: center;
