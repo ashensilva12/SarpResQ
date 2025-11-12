@@ -30,6 +30,11 @@ function Home() {
                     <h3>Hospital Availability</h3>
                     <p>Find hospitals that have antivenom and emergency treatment ready.</p>
                 </div>
+                <div className="feature_card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/616/616490.png" alt="Identify" />
+                    <h3>Snake Identification</h3>
+                    <p>Learn to identify venomous and non-venomous snakes safely.</p>
+                </div>
             </section>
         </div>
     </div>
