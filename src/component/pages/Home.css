@@ -82,3 +82,7 @@ body{
   color: #2d6a4f;
   margin-bottom: 10px;
 }
+.feature_card p {
+  color: #52796f;
+  font-size: 1rem;
+}
