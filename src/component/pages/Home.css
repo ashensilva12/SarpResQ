@@ -13,11 +13,16 @@ body{
     margin-top: 80px;
     text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 18px;
+    padding: 28px 12px;
 }
 .main_content{
-    padding-top: 60px;
+    padding-top: 12px;
+    max-width: 900px;
+    text-align: center;
 }
 .main_content h1{
     font-size: 3rem;
@@ -28,9 +33,16 @@ body{
 .main_content p{
     font-size: 1.5rem;
     color: greenyellow;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.main_buttons{
+    margin-top: 12px;
+    display: flex;
     justify-content: center;
     gap: 20px;
+    order: 2;
+    flex-basis: 100%;
+    align-self: center;
 }
 .main_buttons button{
     padding: 12px 24px;
@@ -108,7 +120,6 @@ body{
     color: #1b4332;
 }
 
-/* Responsive adjustments */
 @media (max-width: 1024px) {
     .main_content h1 { font-size: 2.4rem; }
     .main_content p { font-size: 1.15rem; }
