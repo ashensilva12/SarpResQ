@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap; 
     box-sizing: border-box;
     padding: 0 16px;
 }
@@ -19,7 +20,9 @@
     margin: 0;
     padding: 0;
     gap: 12px;
-    padding-right: 10%;
+    margin-left: auto;
+    flex-wrap: wrap;
+    margin-right: 70px;
 }
 .navlinks li a{
     color: rgb(255, 255, 255);
@@ -54,4 +57,82 @@
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: 8px 12px;
+    }
+    .logo{
+        padding-left: 12px;
+        font-size: 1.25rem;
+    }
+    .navlinks{
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+        margin: 8px 0 0 0;
+    }
+    .navlinks li{
+        display: inline-block;
+    }
+    .navlinks li a{
+        font-size: 1rem;
+        padding: 6px 10px;
+    }
+    }
+@media (max-width: 480px) {
+    .navlinks{
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+    .navlinks li a{
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+    }
+}
+
+/* hamburger toggle styles */
+.nav-toggle{
+        display: none;
+        background: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 8px;
+}
+.hamburger{
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        position: relative;
+        transition: all 0.25s ease;
+}
+.hamburger::before,
+.hamburger::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        transition: all 0.25s ease;
+}
+.hamburger::before{ top: -7px; }
+.hamburger::after{ top: 7px; }
+.hamburger.open{ background: transparent; }
+.hamburger.open::before{ transform: translateY(7px) rotate(45deg); }
+.hamburger.open::after{ transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px){
+    .nav-toggle{ display: block; }
+    .navlinks{ display: none; width: 100%; justify-content: center; }
+    .navlinks.open{ display: flex; flex-direction: column; gap: 8px; padding: 8px 0; }
+    .navlinks li a{ padding: 8px 12px; }
 }
