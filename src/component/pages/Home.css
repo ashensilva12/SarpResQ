@@ -52,3 +52,6 @@ body{
     background-color: #facc15;
     color: #1b4332;
 }
+.btn_hospitals:hover {
+    background-color: #eab308;
+}
