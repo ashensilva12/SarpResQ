@@ -91,3 +91,9 @@ body{
     padding: 60px 40px;
     text-align: center;
 }
+.aboutus h2{
+    color: #065f46;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
