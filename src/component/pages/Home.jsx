@@ -1,12 +1,13 @@
 import React from 'react'
 import Navbar from '../navigation/Navbar'
+import snake from '../../assets/snake.png';
 import './Home.css'
 
 function Home() {
   return (
     <div>
-        <div>
-            <Navbar/>
+       <div>
+        <Navbar/>
         </div>
         <div className='home'>
             <section className="main">
@@ -15,13 +16,13 @@ function Home() {
                     <p>Helping communities stay safe from snake encounters — report, locate, and rescue safely with SarpResQ.</p>
                 </div>
                 <div className="main_buttons">
-                    <button className="btn-report">Report a Snake</button>
-                    <button className="btn-hospitals">Find Hospitals</button>
+                    <button className="btn_report">Report a Snake</button>
+                    <button className="btn_hospitals">Find Hospitals</button>
                 </div>
             </section>
             <section className="features">
                 <div className="feature_card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Report" />
+                    <img src={snake} alt="snake" style={{width: '20%', maxWidth: 800}} />
                     <h3>Report Snake</h3>
                     <p>Quickly notify rescuers when a snake is spotted in your area.</p>
                 </div>
