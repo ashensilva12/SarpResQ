@@ -48,3 +48,7 @@ body{
 .btn_report:hover {
     background-color: #064e3b;
 }
+.btn_hospitals{
+    background-color: #facc15;
+    color: #1b4332;
+}
