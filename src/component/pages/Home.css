@@ -45,3 +45,6 @@ body{
     background-color: #065f46;
     color: white;
 }
+.btn_report:hover {
+    background-color: #064e3b;
+}
