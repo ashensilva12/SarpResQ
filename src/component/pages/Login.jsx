@@ -4,13 +4,13 @@ import loginImage from '../../assets/login.jpg';
 import { Link } from 'react-router-dom';
 
 function Login() {
-  return (
+    return (
    
-    <div className="loginbox">
-        
-        <div className="loginheader">
-            <h2 className='title'>Login</h2>
-        </div>
+        <div className="auth-page">
+            <div className="loginbox">
+                <div className="loginheader">
+                        <h2 className='title'>Login</h2>
+                </div>
         <form>
             <table className='table'>
                 <tr>
@@ -29,9 +29,9 @@ function Login() {
                     <td colSpan="2" >Don't have an account? <Link to="/Register">Register</Link></td>
                 </tr>
             </table>
-        </form>
-        
-    </div>
+                </form>
+            </div>
+        </div>
   )
 }
 
