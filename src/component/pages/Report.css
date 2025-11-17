@@ -7,3 +7,9 @@
 	--muted: #64748b;
 	--border: #d8e3dc;
 }
+.report-page {
+	background: var(--page-bg);
+	min-height: 100vh;
+	padding-top: 96px; /* clear fixed navbar (80px) with a bit extra */
+	box-sizing: border-box;
+}
