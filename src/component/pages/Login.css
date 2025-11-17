@@ -125,3 +125,8 @@
     font-size: medium;
     padding-top: 12px;
 }
+.loginbox a{
+    color: #c5f7c7;
+    text-decoration: none;
+    font-size: medium;
+}
