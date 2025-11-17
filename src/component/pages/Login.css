@@ -112,3 +112,7 @@
 .loginbutton{
     padding-left: 20%;
 }
+.table td[colspan="2"]{
+    text-align: center;
+    padding-top: 30px;
+}
