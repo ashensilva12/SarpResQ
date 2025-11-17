@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding:0;
+    
+}
+.auth-page{
+    /* Brand-only background (no image) */
+    background-image:
+        radial-gradient(1200px 600px at 85% 90%, rgba(0,0,0,0.18), transparent 60%),
+        linear-gradient(135deg, #23b825 0%, #1fa322 45%, #147a19 100%);
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    min-height: 100vh;
+    /* brand variables scoped here */
+    --brand: #23b825;
+    --brand-dark: #1b8f1e;
+    --ring: rgba(35,184,37,0.25);
+}
