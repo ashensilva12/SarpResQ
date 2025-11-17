@@ -1,0 +1,9 @@
+:root {
+	--brand: #23b825; /* Navbar green */
+	--brand-dark: #1d9e20;
+	--card-bg: #ffffff;
+	--page-bg: #f5fff5; /* subtle tint to match brand */
+	--text: #0f172a;
+	--muted: #64748b;
+	--border: #d8e3dc;
+}
