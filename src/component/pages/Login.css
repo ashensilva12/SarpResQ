@@ -86,3 +86,8 @@
     padding: 2px 20px;
     transition: box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
+.loginbox input:focus{
+    border-color: var(--brand);
+    box-shadow: 0 0 0 4px var(--ring);
+    background-color: #fff;
+}
