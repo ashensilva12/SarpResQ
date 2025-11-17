@@ -116,3 +116,7 @@
     text-align: center;
     padding-top: 30px;
 }
+.loginbox button[type="submit"]:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(35,184,37,0.3), 0 3px 10px rgba(0,0,0,0.25);
+}
