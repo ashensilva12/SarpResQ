@@ -46,3 +46,12 @@
     margin-bottom: 32px;
     letter-spacing: 1px;
 }
+.loginheader::after{
+    content: '';
+    display: block;
+    width: 52px;
+    height: 3px;
+    margin: 10px auto 0;
+    background: var(--brand);
+    border-radius: 2px;
+}
