@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Navbar.css'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   const [open, setOpen] = useState(false)
@@ -23,12 +24,12 @@ function Navbar() {
         </button>
 
         <ul className={`navlinks ${open ? 'open' : ''}`}>
-          <li className="active"><a href="#" onClick={close}>Home</a></li>
-          <li className="active"><a href="#" onClick={close}>Report-us</a></li>
-          <li className="active"><a href="#" onClick={close}>Categories</a></li>
-          <li className="active"><a href="#" onClick={close}>Hospital</a></li>
-          <li className="active"><a href="#" onClick={close}>Contact</a></li>
-          <li className="active"><a href="#" onClick={close}>About</a></li>
+          <li className="active"><Link to="/Home" onClick={close}>Home</Link></li>
+          <li className="active"><Link to="/Report" onClick={close}>Report</Link></li>
+          <li className="active"><Link to="/Categories" onClick={close}>Categories</Link></li>
+          <li className="active"><Link to="/Hospital" onClick={close}>Hospital</Link></li>
+          <li className="active"><Link to="/Contact" onClick={close}>Contact</Link></li>
+          <li className="active"><Link to="/About" onClick={close}>About</Link></li>
         </ul>
       </div>
 
