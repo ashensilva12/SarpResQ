@@ -13,3 +13,10 @@
 	padding-top: 96px; /* clear fixed navbar (80px) with a bit extra */
 	box-sizing: border-box;
 }
+.report-container {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 16px 32px;
+	box-sizing: border-box;
+    margin-top: 60px;
+}
