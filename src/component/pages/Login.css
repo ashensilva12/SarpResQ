@@ -91,3 +91,6 @@
     box-shadow: 0 0 0 4px var(--ring);
     background-color: #fff;
 }
+.table td{
+    font-size: 1.5rem;
+}
