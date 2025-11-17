@@ -55,3 +55,10 @@
     background: var(--brand);
     border-radius: 2px;
 }
+.table{
+    margin-bottom: 100px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    border-collapse: collapse;
+}
