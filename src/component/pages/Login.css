@@ -62,3 +62,7 @@
     font-size: 1.2rem;
     border-collapse: collapse;
 }
+.table td{
+    padding: 8px 12px;
+    padding-top: 20px;
+}
