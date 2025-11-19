@@ -63,3 +63,6 @@
 	box-sizing: border-box;
 	background: #fff;
 }
+.report_card textarea { 
+	resize: vertical; 
+}
