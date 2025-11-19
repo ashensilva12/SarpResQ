@@ -33,3 +33,7 @@
 	color: var(--brand);
 	font-weight: 700;
 }
+.report_table{
+	width: 100%;
+	border-collapse: collapse;
+}
