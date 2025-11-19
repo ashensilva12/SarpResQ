@@ -72,3 +72,15 @@
 	border-color: var(--brand);
 	box-shadow: 0 0 0 3px rgba(35, 184, 37, 0.15);
 }
+.report_submit {
+	display: inline-block;
+	width: 100%;
+	background: var(--brand);
+	color: #fff;
+	border: none;
+	border-radius: 999px;
+	padding: 12px 16px;
+	font-weight: 700;
+	letter-spacing: 0.2px;
+	cursor: pointer;
+}
