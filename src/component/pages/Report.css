@@ -84,3 +84,6 @@
 	letter-spacing: 0.2px;
 	cursor: pointer;
 }
+.report_submit:hover {
+	background: var(--brand-dark);
+}
