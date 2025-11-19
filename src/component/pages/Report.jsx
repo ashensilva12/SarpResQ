@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../navigation/Navbar'
 import { Link } from 'react-router-dom'
 import './Report.css'
 
 function Report() {
+    const [location, setLocation] = useState('')
+
+    const handleSetLocation = () => {
+        if (!navigator.geolocation) {
+            alert('Geolocation is not supported by your browser')
+            return
+        }
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                const lat = pos.coords.latitude.toFixed(6)
+                const lng = pos.coords.longitude.toFixed(6)
+                setLocation(`${lat}, ${lng}`)
+            },
+            () => {
+                alert('Unable to retrieve your location')
+            },
+            { enableHighAccuracy: true, timeout: 10000 }
+        )
+    }
     return (
       <div className="report_page">
           <Navbar />
@@ -28,6 +47,25 @@ function Report() {
                   <td>Area :</td>
                   <td>
                     <input type="text" name="area" placeholder="Home" required/>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Location :</td>
+                  <td>
+                    <div className="report_location_row">
+                      <input
+                        className="report_location_input"
+                        type="text"
+                        name="location"
+                        placeholder="Location..."
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        required
+                      />
+                      <button type="button" className="report_set_location_btn" onClick={handleSetLocation}>
+                        Set Location
+                      </button>
+                    </div>
                   </td>
                 </tr>
                 <tr>
