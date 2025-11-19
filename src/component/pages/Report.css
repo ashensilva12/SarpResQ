@@ -72,6 +72,27 @@
 	border-color: var(--brand);
 	box-shadow: 0 0 0 3px rgba(35, 184, 37, 0.15);
 }
+.report_location_row{
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+.report_location_input{
+	flex: 1;
+	width: auto;
+}
+.report_set_location_btn{
+	background: var(--brand);
+	color: #fff;
+	border: none;
+	border-radius: 999px;
+	padding: 10px 14px;
+	font-weight: 700;
+	cursor: pointer;
+}
+.report_set_location_btn:hover{ 
+	background: var(--brand-dark); 
+}
 .report_submit {
 	display: inline-block;
 	width: 100%;
@@ -98,4 +119,10 @@
 @media (max-width: 480px) {
 	.report_card { padding: 16px; }
 	.report_title { font-size: 1.4rem; }
+}
+
+/* Small-screen stacking for location controls */
+@media (max-width: 600px){
+	.report-location-row{ flex-direction: column; align-items: stretch; }
+	.report-set-location-btn{ width: 100%; }
 }
