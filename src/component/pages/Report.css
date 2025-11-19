@@ -66,3 +66,9 @@
 .report_card textarea { 
 	resize: vertical; 
 }
+.report_card input:focus,
+.report_card select:focus,
+.report_card textarea:focus {
+	border-color: var(--brand);
+	box-shadow: 0 0 0 3px rgba(35, 184, 37, 0.15);
+}
