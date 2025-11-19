@@ -37,3 +37,8 @@
 	width: 100%;
 	border-collapse: collapse;
 }
+.report_table ted{
+	padding: 10px 8px;
+	vertical-align: top;
+	color: var(--text);
+}
