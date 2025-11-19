@@ -27,3 +27,9 @@
 	box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 	padding: 20px 20px 8px;
 }
+.report_title{
+	margin: 0 0 16px 0;
+	font-size: 1.6rem;
+	color: var(--brand);
+	font-weight: 700;
+}
