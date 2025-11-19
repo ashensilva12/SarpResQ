@@ -5,13 +5,13 @@ import './Report.css'
 
 function Report() {
     return (
-      <div className="report-page">
+      <div className="report_page">
           <Navbar />
-          <div className="report-container">
-            <div className="report-card">
-              <h1 className="report-title">Report</h1>
+          <div className="report_main">
+            <div className="report_card">
+              <h1 className="report_title">Report</h1>
               <form>
-              <table className="report-table">
+              <table className="report_table">
                 <tr>
                   <td>Snake Type :</td>
                   <td>
@@ -40,7 +40,7 @@ function Report() {
                 </tr>
                 <tr>
                   <td colSpan="2">
-                    <button type="submit" className="report-submit">Submit Report</button>
+                    <button type="submit" className="report_submit">Submit Report</button>
                   </td>
                 </tr>
               </table>
