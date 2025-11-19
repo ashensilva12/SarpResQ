@@ -37,7 +37,7 @@
 	width: 100%;
 	border-collapse: collapse;
 }
-.report_table ted{
+.report_table td{
 	padding: 10px 8px;
 	vertical-align: top;
 	color: var(--text);
