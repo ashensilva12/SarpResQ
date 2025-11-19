@@ -90,3 +90,12 @@
 .report_table tr:last-child td { 
 	text-align: center; 
 }
+@media (max-width: 768px) {
+	.report_table td:first-child { display: block; text-align: left; padding-bottom: 6px; }
+	.report_table td { display: block; width: 100%; }
+}
+
+@media (max-width: 480px) {
+	.report_card { padding: 16px; }
+	.report_title { font-size: 1.4rem; }
+}
