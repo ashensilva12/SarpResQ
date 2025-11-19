@@ -1,39 +1,15 @@
 :root {
-	--brand: #23b825; /* Navbar green */
+	--brand: #23b825;
 	--brand-dark: #1d9e20;
 	--card-bg: #ffffff;
-	--page-bg: #f5fff5; /* subtle tint to match brand */
+	--page-bg: #f5fff5;
 	--text: #0f172a;
 	--muted: #64748b;
 	--border: #d8e3dc;
 }
-.report-page {
+.report_page {
 	background: var(--page-bg);
 	min-height: 100vh;
-	padding-top: 96px; /* clear fixed navbar (80px) with a bit extra */
+	padding-top: 96px;
 	box-sizing: border-box;
-}
-.report-container {
-	max-width: 960px;
-	margin: 0 auto;
-	padding: 0 16px 32px;
-	box-sizing: border-box;
-    margin-top: 60px;
-}
-.report-card {
-	background: var(--card-bg);
-	border: 1px solid var(--border);
-	border-radius: 12px;
-	box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-	padding: 20px 20px 8px;
-}
-.report-title {
-	margin: 0 0 16px 0;
-	font-size: 1.6rem;
-	color: var(--brand);
-	font-weight: 700;
-}
-.report-table {
-	width: 100%;
-	border-collapse: collapse;
 }
