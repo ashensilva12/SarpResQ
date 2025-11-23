@@ -91,5 +91,26 @@ function Categories() {
           onChange={() => {}}
         />
       </div>
+      <div className="categories-grid">
+        {snakes.map((snake) => (
+          <div className="snake-card" key={snake.name}>
+            <div className="img-wrap">
+              <img loading="lazy" src={snake.img} alt={snake.name + ' photo'} className="snake-img" />
+              {snake.img === placeholderImg && (
+                <div className="no-image-badge">No image</div>
+              )}
+            </div>
+            <div className="snake-name">{snake.name}</div>
+            <div className="snake-scientific">{snake.scientific.replace(/_/g, ' ')}</div>
+            <div className="snake-details">{snake.details}</div>
+            <div className="snake-actions">
+              <button className="btn-view">Learn more</button>
+            </div>
+          </div>
+        ))}
+      </div>
+      </div>
+    </div>
+  )
 
 export default Categories
