@@ -74,5 +74,13 @@ function Categories() {
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+    return (
+    <div>
+      <div>
+        <Navbar />
+      </div>
+      <div className="page-wrap">
+      <h2 className="page-title">Sri Lankan Snakes</h2>
+      <p className="page-sub">A concise gallery of common species — tap a card to learn more.</p>
 
 export default Categories
