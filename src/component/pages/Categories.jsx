@@ -14,7 +14,8 @@ const initialSnakes = [
   { name: 'Banded Krait', scientific: 'Bungarus_fasciatus', details: 'Large, venomous, yellow and black bands. Rare in Sri Lanka.' },
   { name: 'Spectacled Cobra', scientific: 'Naja_naja', details: 'Spectacled cobra, highly venomous, hooded. Found in all zones.' },
   { name: 'Indian Python', scientific: 'Python_molurus', details: 'Large, non-venomous constrictor. Found in forests and grasslands.' },
-            
+  { name: 'Green Pit Viper', scientific: 'Trimeresurus_trigonocephalus', details: 'Venomous, bright green, arboreal. Endemic to Sri Lanka.' },
+              
 ]
 function Categories() {
 
