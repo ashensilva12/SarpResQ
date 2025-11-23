@@ -27,7 +27,9 @@ const initialSnakes = [
   { name: 'Spectacled Cobra (alt)', scientific: 'Naja_naja', details: 'Alternate entry for Naja naja.' }
 ]
 function Categories() {
-
+  const [snakes, setSnakes] = useState(
+    initialSnakes.map((s) => ({ ...s, img: placeholderImg }))
+  )
 }
 
 export default Categories
