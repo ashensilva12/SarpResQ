@@ -17,7 +17,8 @@ const initialSnakes = [
   { name: 'Green Pit Viper', scientific: 'Trimeresurus_trigonocephalus', details: 'Venomous, bright green, arboreal. Endemic to Sri Lanka.' },
   { name: 'Vine Snake', scientific: 'Ahaetulla_nasuta', details: 'Mildly venomous, slender, green, excellent camouflage.' },
   { name: 'Dog-faced Water Snake', scientific: 'Cerberus_rynchops', details: 'Non-venomous, aquatic, found in brackish waters.' },
-                  
+  { name: 'Checkered Keelback', scientific: 'Xenochrophis_piscator', details: 'Non-venomous, aquatic, checkered pattern.' },
+                    
 ]
 function Categories() {
 
