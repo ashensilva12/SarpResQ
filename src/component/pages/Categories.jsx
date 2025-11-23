@@ -24,7 +24,7 @@ const initialSnakes = [
   { name: 'Flying Snake', scientific: 'Chrysopelea_taprobanica', details: 'Mildly venomous, can glide between trees. Endemic.' },
   { name: 'Wolf Snake', scientific: 'Lycodon_aulicus', details: 'Non-venomous, nocturnal, resembles krait.' },
   { name: "Merrem's Hump-nosed Viper (alt)", scientific: 'Hypnale_nepa', details: 'Variant entry; local records.' },
-
+  { name: 'Spectacled Cobra (alt)', scientific: 'Naja_naja', details: 'Alternate entry for Naja naja.' }
 ]
 function Categories() {
 
