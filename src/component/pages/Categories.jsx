@@ -22,6 +22,7 @@ const initialSnakes = [
   { name: 'Cat Snake', scientific: 'Boiga_ceylonensis', details: 'Mildly venomous, slender, nocturnal. Large eyes.' },
   { name: 'Bronzeback', scientific: 'Dendrelaphis_tristis', details: 'Non-venomous, arboreal, bronze stripe along back.' },
   { name: 'Flying Snake', scientific: 'Chrysopelea_taprobanica', details: 'Mildly venomous, can glide between trees. Endemic.' },
+  { name: 'Wolf Snake', scientific: 'Lycodon_aulicus', details: 'Non-venomous, nocturnal, resembles krait.' },
 
 ]
 function Categories() {
