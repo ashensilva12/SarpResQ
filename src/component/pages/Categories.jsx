@@ -30,6 +30,20 @@ function Categories() {
   const [snakes, setSnakes] = useState(
     initialSnakes.map((s) => ({ ...s, img: placeholderImg }))
   )
+    useEffect(() => {
+    // Fetch thumbnail for each snake from Wikipedia (Wikimedia Commons)
+    // Try the REST summary endpoint first (provides thumbnail/originalimage),
+    // then fall back to the action=query pageimages API.
+    const fetchThumbnail = async (snake) => {
+      const title = snake.scientific
+      try {
+        // REST summary endpoint (often has originalimage or thumbnail)
+        const restUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+        const restResp = await fetch(restUrl)
+        if (restResp.ok) {
+          const restData = await restResp.json()
+          const src = (restData && (restData.originalimage?.source || restData.thumbnail?.source))
+          
 }
 
 export default Categories
