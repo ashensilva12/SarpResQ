@@ -15,7 +15,8 @@ const initialSnakes = [
   { name: 'Spectacled Cobra', scientific: 'Naja_naja', details: 'Spectacled cobra, highly venomous, hooded. Found in all zones.' },
   { name: 'Indian Python', scientific: 'Python_molurus', details: 'Large, non-venomous constrictor. Found in forests and grasslands.' },
   { name: 'Green Pit Viper', scientific: 'Trimeresurus_trigonocephalus', details: 'Venomous, bright green, arboreal. Endemic to Sri Lanka.' },
-              
+  { name: 'Vine Snake', scientific: 'Ahaetulla_nasuta', details: 'Mildly venomous, slender, green, excellent camouflage.' },
+                
 ]
 function Categories() {
 
