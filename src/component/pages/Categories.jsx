@@ -26,11 +26,13 @@ const initialSnakes = [
   { name: "Merrem's Hump-nosed Viper (alt)", scientific: 'Hypnale_nepa', details: 'Variant entry; local records.' },
   { name: 'Spectacled Cobra (alt)', scientific: 'Naja_naja', details: 'Alternate entry for Naja naja.' }
 ]
+
 function Categories() {
   const [snakes, setSnakes] = useState(
     initialSnakes.map((s) => ({ ...s, img: placeholderImg }))
   )
-    useEffect(() => {
+
+  useEffect(() => {
     // Fetch thumbnail for each snake from Wikipedia (Wikimedia Commons)
     // Try the REST summary endpoint first (provides thumbnail/originalimage),
     // then fall back to the action=query pageimages API.
@@ -42,75 +44,78 @@ function Categories() {
         const restResp = await fetch(restUrl)
         if (restResp.ok) {
           const restData = await restResp.json()
-          const src = (restData && (restData.originalimage?.source || restData.thumbnail?.source))
+          const src = restData?.originalimage?.source || restData?.thumbnail?.source
           if (src) {
             setSnakes((prev) => prev.map((p) => (p.scientific === snake.scientific ? { ...p, img: src } : p)))
             return
           }
         }
-}        // Fallback to MediaWiki pageimages
+
+        // Fallback to MediaWiki pageimages
         const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=800&origin=*`
         const apiResp = await fetch(apiUrl)
         if (!apiResp.ok) return
         const apiData = await apiResp.json()
-        if (!apiData || !apiData.query || !apiData.query.pages) return
-        const pages = apiData.query.pages
+        const pages = apiData?.query?.pages
+        if (!pages) return
         const pageKey = Object.keys(pages)[0]
         const page = pages[pageKey]
-        if (page && page.thumbnail && page.thumbnail.source) {
+        if (page?.thumbnail?.source) {
           const src = page.thumbnail.source
           setSnakes((prev) => prev.map((p) => (p.scientific === snake.scientific ? { ...p, img: src } : p)))
         }
       } catch (e) {
         // network or parsing error — keep placeholder
-        // console.warn(`Thumbnail fetch failed for ${title}:`, e)
       }
     }
-        // Run fetches in sequence to avoid too many concurrent requests
+
+    // Run fetches in sequence to avoid too many concurrent requests
     ;(async () => {
-      for (const snake of snakes) {
-        await fetchThumbnail(snake)
+      for (const s of snakes) {
+        await fetchThumbnail(s)
       }
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-    return (
+
+  return (
     <div>
       <div>
         <Navbar />
       </div>
       <div className="page-wrap">
-      <h2 className="page-title">Sri Lankan Snakes</h2>
-      <p className="page-sub">A concise gallery of common species — tap a card to learn more.</p>
-      <div className="search-row">
-        <input
-          aria-label="Search snakes"
-          className="search-input"
-          placeholder="Search by common or scientific name..."
-          value={''}
-          onChange={() => {}}
-        />
-      </div>
-      <div className="categories-grid">
-        {snakes.map((snake) => (
-          <div className="snake-card" key={snake.name}>
-            <div className="img-wrap">
-              <img loading="lazy" src={snake.img} alt={snake.name + ' photo'} className="snake-img" />
-              {snake.img === placeholderImg && (
-                <div className="no-image-badge">No image</div>
-              )}
+        <h2 className="page-title">Sri Lankan Snakes</h2>
+        <p className="page-sub">A concise gallery of common species — tap a card to learn more.</p>
+        <div className="search-row">
+          <input
+            aria-label="Search snakes"
+            className="search-input"
+            placeholder="Search by common or scientific name..."
+            value={''}
+            onChange={() => {}}
+          />
+        </div>
+
+        <div className="categories-grid">
+          {snakes.map((snake) => (
+            <div className="snake-card" key={snake.name}>
+              <div className="img-wrap">
+                <img loading="lazy" src={snake.img} alt={snake.name + ' photo'} className="snake-img" />
+                {snake.img === placeholderImg && (
+                  <div className="no-image-badge">No image</div>
+                )}
+              </div>
+              <div className="snake-name">{snake.name}</div>
+              <div className="snake-scientific">{snake.scientific.replace(/_/g, ' ')}</div>
+              <div className="snake-details">{snake.details}</div>
+              <div className="snake-actions">
+                <button className="btn-view">Learn more</button>
+              </div>
             </div>
-            <div className="snake-name">{snake.name}</div>
-            <div className="snake-scientific">{snake.scientific.replace(/_/g, ' ')}</div>
-            <div className="snake-details">{snake.details}</div>
-            <div className="snake-actions">
-              <button className="btn-view">Learn more</button>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </div>
   )
-
+}
 export default Categories
