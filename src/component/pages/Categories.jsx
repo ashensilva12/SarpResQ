@@ -20,6 +20,7 @@ const initialSnakes = [
   { name: 'Checkered Keelback', scientific: 'Xenochrophis_piscator', details: 'Non-venomous, aquatic, checkered pattern.' },
   { name: 'Rat Snake', scientific: 'Ptyas_mucosa', details: 'Large, non-venomous, fast-moving. Common in rural areas.' },
   { name: 'Cat Snake', scientific: 'Boiga_ceylonensis', details: 'Mildly venomous, slender, nocturnal. Large eyes.' },
+  { name: 'Bronzeback', scientific: 'Dendrelaphis_tristis', details: 'Non-venomous, arboreal, bronze stripe along back.' },
 
 ]
 function Categories() {
