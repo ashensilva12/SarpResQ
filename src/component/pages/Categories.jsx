@@ -21,6 +21,7 @@ const initialSnakes = [
   { name: 'Rat Snake', scientific: 'Ptyas_mucosa', details: 'Large, non-venomous, fast-moving. Common in rural areas.' },
   { name: 'Cat Snake', scientific: 'Boiga_ceylonensis', details: 'Mildly venomous, slender, nocturnal. Large eyes.' },
   { name: 'Bronzeback', scientific: 'Dendrelaphis_tristis', details: 'Non-venomous, arboreal, bronze stripe along back.' },
+  { name: 'Flying Snake', scientific: 'Chrysopelea_taprobanica', details: 'Mildly venomous, can glide between trees. Endemic.' },
 
 ]
 function Categories() {
