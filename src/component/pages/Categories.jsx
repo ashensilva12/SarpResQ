@@ -66,5 +66,13 @@ function Categories() {
         // console.warn(`Thumbnail fetch failed for ${title}:`, e)
       }
     }
+        // Run fetches in sequence to avoid too many concurrent requests
+    ;(async () => {
+      for (const snake of snakes) {
+        await fetchThumbnail(snake)
+      }
+    })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
 export default Categories
