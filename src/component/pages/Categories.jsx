@@ -61,6 +61,10 @@ function Categories() {
           const src = page.thumbnail.source
           setSnakes((prev) => prev.map((p) => (p.scientific === snake.scientific ? { ...p, img: src } : p)))
         }
+      } catch (e) {
+        // network or parsing error — keep placeholder
+        // console.warn(`Thumbnail fetch failed for ${title}:`, e)
       }
+    }
 
 export default Categories
