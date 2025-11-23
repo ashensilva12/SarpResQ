@@ -43,7 +43,11 @@ function Categories() {
         if (restResp.ok) {
           const restData = await restResp.json()
           const src = (restData && (restData.originalimage?.source || restData.thumbnail?.source))
-          
+          if (src) {
+            setSnakes((prev) => prev.map((p) => (p.scientific === snake.scientific ? { ...p, img: src } : p)))
+            return
+          }
+        }
 }
 
 export default Categories
