@@ -48,6 +48,19 @@ function Categories() {
             return
           }
         }
-}
+}        // Fallback to MediaWiki pageimages
+        const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=800&origin=*`
+        const apiResp = await fetch(apiUrl)
+        if (!apiResp.ok) return
+        const apiData = await apiResp.json()
+        if (!apiData || !apiData.query || !apiData.query.pages) return
+        const pages = apiData.query.pages
+        const pageKey = Object.keys(pages)[0]
+        const page = pages[pageKey]
+        if (page && page.thumbnail && page.thumbnail.source) {
+          const src = page.thumbnail.source
+          setSnakes((prev) => prev.map((p) => (p.scientific === snake.scientific ? { ...p, img: src } : p)))
+        }
+      }
 
 export default Categories
