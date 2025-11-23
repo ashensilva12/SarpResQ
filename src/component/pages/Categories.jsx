@@ -9,7 +9,8 @@ const initialSnakes = [
   { name: 'Saw-scaled Viper', scientific: 'Echis_carinatus', details: 'Small, aggressive, highly venomous. Saw-like scales produce a rasping sound.' },
   { name: 'Hump-nosed Viper', scientific: 'Hypnale_hypnale', details: 'Venomous, common in gardens and forests. Short, stout, upturned snout.' },
   { name: "Merrem's Hump-nosed Viper", scientific: 'Hypnale_nepa', details: 'Similar to Hypnale hypnale, found in wet zones. Venomous.' },
-    
+  { name: 'Common Krait', scientific: 'Bungarus_caeruleus', details: 'Highly venomous, nocturnal. Glossy black with white bands. Neurotoxic venom.' },
+      
 ]
 function Categories() {
 
