@@ -13,7 +13,8 @@ const initialSnakes = [
   { name: 'Ceylon Krait', scientific: 'Bungarus_ceylonicus', details: 'Endemic, rare, highly venomous. Black and white bands, found in wet zones.' },
   { name: 'Banded Krait', scientific: 'Bungarus_fasciatus', details: 'Large, venomous, yellow and black bands. Rare in Sri Lanka.' },
   { name: 'Spectacled Cobra', scientific: 'Naja_naja', details: 'Spectacled cobra, highly venomous, hooded. Found in all zones.' },
-          
+  { name: 'Indian Python', scientific: 'Python_molurus', details: 'Large, non-venomous constrictor. Found in forests and grasslands.' },
+            
 ]
 function Categories() {
 
