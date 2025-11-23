@@ -16,7 +16,8 @@ const initialSnakes = [
   { name: 'Indian Python', scientific: 'Python_molurus', details: 'Large, non-venomous constrictor. Found in forests and grasslands.' },
   { name: 'Green Pit Viper', scientific: 'Trimeresurus_trigonocephalus', details: 'Venomous, bright green, arboreal. Endemic to Sri Lanka.' },
   { name: 'Vine Snake', scientific: 'Ahaetulla_nasuta', details: 'Mildly venomous, slender, green, excellent camouflage.' },
-                
+  { name: 'Dog-faced Water Snake', scientific: 'Cerberus_rynchops', details: 'Non-venomous, aquatic, found in brackish waters.' },
+                  
 ]
 function Categories() {
 
