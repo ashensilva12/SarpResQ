@@ -18,7 +18,8 @@ const initialSnakes = [
   { name: 'Vine Snake', scientific: 'Ahaetulla_nasuta', details: 'Mildly venomous, slender, green, excellent camouflage.' },
   { name: 'Dog-faced Water Snake', scientific: 'Cerberus_rynchops', details: 'Non-venomous, aquatic, found in brackish waters.' },
   { name: 'Checkered Keelback', scientific: 'Xenochrophis_piscator', details: 'Non-venomous, aquatic, checkered pattern.' },
-                    
+  { name: 'Rat Snake', scientific: 'Ptyas_mucosa', details: 'Large, non-venomous, fast-moving. Common in rural areas.' },
+                      
 ]
 function Categories() {
 
