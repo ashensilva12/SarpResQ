@@ -23,6 +23,7 @@ const initialSnakes = [
   { name: 'Bronzeback', scientific: 'Dendrelaphis_tristis', details: 'Non-venomous, arboreal, bronze stripe along back.' },
   { name: 'Flying Snake', scientific: 'Chrysopelea_taprobanica', details: 'Mildly venomous, can glide between trees. Endemic.' },
   { name: 'Wolf Snake', scientific: 'Lycodon_aulicus', details: 'Non-venomous, nocturnal, resembles krait.' },
+  { name: "Merrem's Hump-nosed Viper (alt)", scientific: 'Hypnale_nepa', details: 'Variant entry; local records.' },
 
 ]
 function Categories() {
