@@ -82,5 +82,14 @@ function Categories() {
       <div className="page-wrap">
       <h2 className="page-title">Sri Lankan Snakes</h2>
       <p className="page-sub">A concise gallery of common species — tap a card to learn more.</p>
+      <div className="search-row">
+        <input
+          aria-label="Search snakes"
+          className="search-input"
+          placeholder="Search by common or scientific name..."
+          value={''}
+          onChange={() => {}}
+        />
+      </div>
 
 export default Categories
