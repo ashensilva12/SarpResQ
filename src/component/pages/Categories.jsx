@@ -10,6 +10,7 @@ const initialSnakes = [
   { name: 'Hump-nosed Viper', scientific: 'Hypnale_hypnale', details: 'Venomous, common in gardens and forests. Short, stout, upturned snout.' },
   { name: "Merrem's Hump-nosed Viper", scientific: 'Hypnale_nepa', details: 'Similar to Hypnale hypnale, found in wet zones. Venomous.' },
   { name: 'Common Krait', scientific: 'Bungarus_caeruleus', details: 'Highly venomous, nocturnal. Glossy black with white bands. Neurotoxic venom.' },
+  { name: 'Ceylon Krait', scientific: 'Bungarus_ceylonicus', details: 'Endemic, rare, highly venomous. Black and white bands, found in wet zones.' },
       
 ]
 function Categories() {
