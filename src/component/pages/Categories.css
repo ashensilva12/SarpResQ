@@ -115,3 +115,12 @@
   .snake-card{ min-height: auto; padding-bottom: 8px; }
   .img-wrap{ max-width: 100%; }
 }
+/* Typography system and global text styles for Categories page */
+:root{
+  --brand-green: #0b7a1a;
+  --brand-dark: #063b1f;
+  --muted: #4b5563;
+  --card-bg: rgba(255,255,255,0.9);
+  --radius: 14px;
+  --max-content-width: 1200px;
+}
