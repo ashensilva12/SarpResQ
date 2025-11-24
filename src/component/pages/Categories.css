@@ -142,3 +142,8 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
 
 /* Details: readable paragraph rules */
 .snake-details{ font-size: 0.98rem; color: #1f2937; text-align: center; }
+/* No-image badge refinement */
+.no-image-badge{ font-weight:700; background: rgba(11,122,26,0.9); }
+
+/* footer-like spacing under grid */
+.page-wrap .categories-grid { padding-bottom: 6rem; }
