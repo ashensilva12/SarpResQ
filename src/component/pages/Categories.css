@@ -152,3 +152,8 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
   .snake-name{ font-size: 1.08rem }
   .snake-details{ font-size: 0.96rem }
 }
+
+/* ensure readable text on any background */
+.snake-card .snake-name, .snake-card .snake-details, .snake-card .snake-scientific {
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+}
