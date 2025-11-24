@@ -209,3 +209,12 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
 .snake-card:hover .img-wrap::after{ background: linear-gradient(180deg, rgba(255,255,255,0), rgba(226,255,230,0.95)); }
 
 .snake-name{ margin-top:12px }
+.btn-view{ background: linear-gradient(90deg,#10b981,#059669); color:white; border:none; padding:8px 14px; border-radius:10px }
+.snake-actions{ margin-top:10px }
+@media (max-width: 600px) {
+  .categories-grid { gap: 16px; padding: 16px 4px; }
+  .snake-card { border-radius: 10px; }
+  .snake-name { font-size: 1rem; }
+  .snake-details { font-size: 0.95rem; padding: 0 8px 12px; }
+  .img-wrap { max-width: 100%; aspect-ratio: 4/3; }
+}
