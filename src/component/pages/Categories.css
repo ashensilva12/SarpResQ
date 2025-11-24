@@ -185,3 +185,12 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
   background: linear-gradient(90deg,#16a34a,#059669);
   box-shadow: 0 8px 20px rgba(5,150,105,0.12);
 }
+@media (max-width: 900px) {
+  .page-title { font-size: 1.55rem; padding-bottom: 10px; }
+  .page-title::after { width: 100px; height: 5px; }
+}
+
+@media (max-width: 480px) {
+  .page-title { font-size: 1.35rem; }
+  .page-title::after { width: 84px; }
+}
