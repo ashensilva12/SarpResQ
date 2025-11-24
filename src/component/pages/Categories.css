@@ -164,3 +164,14 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
   padding-bottom: 112px;
   background: radial-gradient(1200px 400px at 10% 10%, rgba(35,184,37,0.06), transparent 8%), linear-gradient(180deg, #f7fff7 0%, #ecfff0 100%);
 }
+.page-title {
+  text-align: center;
+  margin: 0 0 20px 0;
+  color: #0b7a1a;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  text-transform: capitalize;
+  position: relative;
+  padding-bottom: 14px;
+}
