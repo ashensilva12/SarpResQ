@@ -175,3 +175,13 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
   position: relative;
   padding-bottom: 14px;
 }
+.page-title::after{
+  content: '';
+  display: block;
+  width: 140px;
+  height: 6px;
+  margin: 8px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#16a34a,#059669);
+  box-shadow: 0 8px 20px rgba(5,150,105,0.12);
+}
