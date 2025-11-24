@@ -206,3 +206,6 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
   background: linear-gradient(180deg, rgba(255,255,255,0), rgba(236,255,240,0.95));
   pointer-events:none;
 }
+.snake-card:hover .img-wrap::after{ background: linear-gradient(180deg, rgba(255,255,255,0), rgba(226,255,230,0.95)); }
+
+.snake-name{ margin-top:12px }
