@@ -157,3 +157,10 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
 .snake-card .snake-name, .snake-card .snake-details, .snake-card .snake-scientific {
   text-shadow: 0 1px 0 rgba(255,255,255,0.4);
 }
+
+.page-wrap {
+  min-height: 100vh;
+  padding-top: 112px;
+  padding-bottom: 112px;
+  background: radial-gradient(1200px 400px at 10% 10%, rgba(35,184,37,0.06), transparent 8%), linear-gradient(180deg, #f7fff7 0%, #ecfff0 100%);
+}
