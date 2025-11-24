@@ -102,3 +102,10 @@
   cursor:pointer;
   transition: transform .18s ease, box-shadow .18s ease;
 }
+.btn-view:hover{ transform: translateY(-3px); box-shadow: 0 10px 20px rgba(6,95,70,0.06); }
+
+/* Focus styles for accessibility */
+.snake-card:focus-within, .snake-card:focus {
+  outline: 3px solid rgba(11,122,26,0.12);
+  box-shadow: 0 20px 40px rgba(6,95,70,0.06);
+}
