@@ -147,3 +147,8 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
 
 /* footer-like spacing under grid */
 .page-wrap .categories-grid { padding-bottom: 6rem; }
+/* Responsive text sizing */
+@media (max-width: 900px){
+  .snake-name{ font-size: 1.08rem }
+  .snake-details{ font-size: 0.96rem }
+}
