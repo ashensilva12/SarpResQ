@@ -109,3 +109,9 @@
   outline: 3px solid rgba(11,122,26,0.12);
   box-shadow: 0 20px 40px rgba(6,95,70,0.06);
 }
+/* Small-screen tweaks */
+@media (max-width: 600px){
+  .categories-grid{ gap: 16px; padding: 16px; }
+  .snake-card{ min-height: auto; padding-bottom: 8px; }
+  .img-wrap{ max-width: 100%; }
+}
