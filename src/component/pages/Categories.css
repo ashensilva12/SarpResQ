@@ -29,3 +29,7 @@
   min-height: 360px;
   padding-bottom: 12px;
 }
+.snake-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(35,184,37,0.12);
+}
