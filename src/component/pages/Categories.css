@@ -92,3 +92,13 @@
   align-items:center;
   justify-content:center;
 }
+.btn-view{
+  background: transparent;
+  border: 1px solid rgba(6,95,70,0.12);
+  color: var(--brand-dark, #063b1f);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
