@@ -72,3 +72,9 @@
   margin: 14px 0 8px;
   text-align: center;
 }
+.snake-scientific{
+  font-style: italic;
+  color: #374151;
+  font-size: 0.98rem;
+  margin-bottom: 8px;
+}
