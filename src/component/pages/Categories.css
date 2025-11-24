@@ -134,3 +134,11 @@ h2.page-title{ font-family: 'Poppins', Inter, system-ui; }
 
 /* Card content spacing */
 .snake-card { padding-bottom: 10px; }
+/* Name styles */
+.snake-name { font-size: 1.25rem; }
+
+/* Scientific name is smaller and slightly muted */
+.snake-scientific{ color: var(--muted); font-size: 0.95rem; }
+
+/* Details: readable paragraph rules */
+.snake-details{ font-size: 0.98rem; color: #1f2937; text-align: center; }
