@@ -78,3 +78,9 @@
   font-size: 0.98rem;
   margin-bottom: 8px;
 }
+.snake-details {
+  font-size: 0.98rem;
+  color: #0f1724;
+  padding: 0 18px 18px;
+  text-align: center;
+}
