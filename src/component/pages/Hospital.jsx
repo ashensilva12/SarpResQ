@@ -101,5 +101,11 @@ export default function Hospital() {
   return (
     <div className="hospital-page page-wrap">
       <Navbar />
+        <section className="hospital-hero">
+        <div className="hero-inner">
+          <div className="hero-text">
+            <h1>Nearest Hospitals & Antivenom Stock</h1>
+            <p className="lead">When someone is bitten by a snake, get to a hospital quickly. This page finds nearby hospitals and shows antivenom availability.</p>
+            <div className="controls"></div>
   )
 }
