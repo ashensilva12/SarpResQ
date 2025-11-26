@@ -108,5 +108,8 @@ export default function Hospital() {
             <p className="lead">When someone is bitten by a snake, get to a hospital quickly. This page finds nearby hospitals and shows antivenom availability.</p>
             <div className="controls"></div>
                 <button className="btn" onClick={refreshLocation} disabled={loading}>Refresh location</button>
+                <button className="btn ghost" onClick={() => { window.location.reload() }}>Reload App</button>
+            </div>
+          </div>
   )
 }
