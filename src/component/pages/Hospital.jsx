@@ -113,5 +113,11 @@ export default function Hospital() {
           </div>
         <div className="hero-visual" aria-hidden>
             <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+            <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0" stopColor="#34d399" />
+                  <stop offset="1" stopColor="#06b6d4" />
+                </linearGradient>
+            </defs>
   )
 }
