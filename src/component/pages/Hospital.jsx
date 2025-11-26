@@ -129,5 +129,89 @@ export default function Hospital() {
           </div>
         </div>
       </section>
+    <section className="hospital-content">
+        <div className="panel">
+          <h2>Your Location</h2>
+          {loading && <div className="muted">Detecting location…</div>}
+          {error && <div className="error">{error}</div>}
+          {userPos ? (
+            <div>
+              <div className="location-row">
+                <div className="location-info">Lat: {userPos.lat.toFixed(5)}, Lon: {userPos.lon.toFixed(5)}</div>
+                <div className="location-actions">
+                  <button className="btn" onClick={() => copyCoords(userPos.lat, userPos.lon)}>Copy</button>
+                  <a className="btn" href={getOsmLink(userPos.lat, userPos.lon)} target="_blank" rel="noopener noreferrer">Open map</a>
+                </div>
+              </div>
+
+              <div className="map-embed">
+                <iframe
+                  src={getOsmEmbed(userPos.lat, userPos.lon)}
+                  style={{ border: '0' }}
+                  loading="lazy"
+                  title="Your location map"
+                ></iframe>
+              </div>
+            </div>
+          ) : (
+            !loading && <div className="muted">Location not available. Allow location access or use a device with GPS.</div>
+          )}
+        </div>
+
+        <div className="panel">
+          <h2>Nearest Hospital</h2>
+          {!userPos && <div className="muted">Waiting for location…</div>}
+          {nearest && (
+            <div className="hospital-card card-elevate">
+              <div className="hospital-avatar" aria-hidden>
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="11" fill="#f0fff4" />
+                  <path d="M12 7v6" stroke="#059669" strokeWidth="1.6" strokeLinecap="round" />
+                  <path d="M9 10h6" stroke="#059669" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
+              </div>
+              <div className="hospital-main">
+                <div className="hospital-name">{nearest.name}</div>
+                <div className="hospital-distance">{nearest.distanceKm.toFixed(2)} km away</div>
+                <div className="hospital-phone">Phone: <a href={`tel:${nearest.phone}`}>{nearest.phone}</a></div>
+                <div className={`antivenom ${nearest.antivenomStock > 0 ? 'in' : 'out'}`}>
+                  {nearest.antivenomStock > 0 ? `${nearest.antivenomStock} antivenom injections in stock` : 'No antivenom in stock'}
+                </div>
+              </div>
+              <div className="hospital-actions">
+                <a className="btn primary" href={openDirections(nearest.lat, nearest.lon)} target="_blank" rel="noopener noreferrer">Directions</a>
+                <a className="btn" href={`tel:${nearest.phone}`}>Call</a>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="panel">
+          <h2>Nearest Hospital With Antivenom</h2>
+          {nearestWithStock ? (
+            <div className="hospital-card card-elevate">
+              <div className="hospital-avatar" aria-hidden>
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="11" fill="#fffaf0" />
+                  <path d="M9 12h6" stroke="#b45309" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
+              </div>
+              <div className="hospital-main">
+                <div className="hospital-name">{nearestWithStock.name}</div>
+                <div className="hospital-distance">{nearestWithStock.distanceKm.toFixed(2)} km away</div>
+                <div className="hospital-phone">Phone: <a href={`tel:${nearestWithStock.phone}`}>{nearestWithStock.phone}</a></div>
+                <div className="antivenom in">{nearestWithStock.antivenomStock} antivenom injections in stock</div>
+              </div>
+              <div className="hospital-actions">
+                <a className="btn primary" href={openDirections(nearestWithStock.lat, nearestWithStock.lon)} target="_blank" rel="noopener noreferrer">Directions</a>
+                <a className="btn" href={`tel:${nearestWithStock.phone}`}>Call</a>
+              </div>
+            </div>
+          ) : (
+            <div className="muted">No nearby hospital with antivenom found in dataset.</div>
+          )}
+        </div>
+      </section>
+      
   )
 }
