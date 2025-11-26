@@ -212,6 +212,22 @@ export default function Hospital() {
           )}
         </div>
       </section>
-      
+            <section className="what-to-do">
+        <h2>What to do if bitten</h2>
+        <ol>
+          <li>Stay calm and move the person away from the snake to a safe area.</li>
+          <li>Call emergency services or the hospital shown above immediately.</li>
+          <li>Keep the affected limb immobilized and below heart level if possible.</li>
+          <li>Remove jewelry or tight clothing near the bite (swelling may occur).</li>
+          <li>Do not cut the wound, suck the venom, or apply a tourniquet.</li>
+          <li>If possible, note the time of the bite and take a photo of the snake only if it is safe to do so.</li>
+          <li>Get to the nearest hospital quickly — antivenom may be time-sensitive.</li>
+        </ol>
+        <div className="cta-row">
+          <a className="btn emergency" href="tel:119">Call Emergency (119)</a>
+          <button className="btn" onClick={() => navigator.clipboard?.writeText('Patient bit time: ' + new Date().toISOString())}>Copy timestamp</button>
+        </div>
+      </section>
+    </div>
   )
 }
