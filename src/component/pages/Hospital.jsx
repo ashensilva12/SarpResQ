@@ -111,5 +111,7 @@ export default function Hospital() {
                 <button className="btn ghost" onClick={() => { window.location.reload() }}>Reload App</button>
             </div>
           </div>
+        <div className="hero-visual" aria-hidden>
+            <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
   )
 }
