@@ -101,26 +101,28 @@ export default function Hospital() {
   return (
     <div className="hospital-page page-wrap">
       <Navbar />
-        <section className="hospital-hero">
+
+      <section className="hospital-hero">
         <div className="hero-inner">
           <div className="hero-text">
             <h1>Nearest Hospitals & Antivenom Stock</h1>
             <p className="lead">When someone is bitten by a snake, get to a hospital quickly. This page finds nearby hospitals and shows antivenom availability.</p>
-            <div className="controls"></div>
-                <button className="btn" onClick={refreshLocation} disabled={loading}>Refresh location</button>
-                <button className="btn ghost" onClick={() => { window.location.reload() }}>Reload App</button>
+            <div className="controls">
+              <button className="btn" onClick={refreshLocation} disabled={loading}>Refresh location</button>
+              <button className="btn ghost" onClick={() => { window.location.reload() }}>Reload App</button>
             </div>
           </div>
-        <div className="hero-visual" aria-hidden>
-            <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
-                <defs>
+
+          <div className="hero-visual" aria-hidden>
+            <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
                 <linearGradient id="g1" x1="0" x2="1">
                   <stop offset="0" stopColor="#34d399" />
                   <stop offset="1" stopColor="#06b6d4" />
                 </linearGradient>
-                </defs>
-                <rect x="0" y="0" width="160" height="120" rx="14" fill="url(#g1)" opacity="0.12" />
-                <g transform="translate(18,20)">
+              </defs>
+              <rect x="0" y="0" width="160" height="120" rx="14" fill="url(#g1)" opacity="0.12" />
+              <g transform="translate(18,20)">
                 <circle cx="36" cy="24" r="18" fill="#fff" opacity="0.9" />
                 <path d="M36 14v12" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" />
                 <path d="M26 24h20" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" />
@@ -129,7 +131,8 @@ export default function Hospital() {
           </div>
         </div>
       </section>
-    <section className="hospital-content">
+
+      <section className="hospital-content">
         <div className="panel">
           <h2>Your Location</h2>
           {loading && <div className="muted">Detecting location…</div>}
@@ -212,7 +215,8 @@ export default function Hospital() {
           )}
         </div>
       </section>
-            <section className="what-to-do">
+
+      <section className="what-to-do">
         <h2>What to do if bitten</h2>
         <ol>
           <li>Stay calm and move the person away from the snake to a safe area.</li>
