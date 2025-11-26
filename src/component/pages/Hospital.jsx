@@ -119,5 +119,6 @@ export default function Hospital() {
                   <stop offset="1" stopColor="#06b6d4" />
                 </linearGradient>
             </defs>
+        <rect x="0" y="0" width="160" height="120" rx="14" fill="url(#g1)" opacity="0.12" />
   )
 }
