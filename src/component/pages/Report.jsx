@@ -9,7 +9,8 @@ function Report() {
   const [selectOpen, setSelectOpen] = useState(false)
   const [highlightIndex, setHighlightIndex] = useState(0)
   const selectRef = useRef(null)
-    const [location, setLocation] = useState('')
+    const [locationStr, setLocationStr] = useState('')
+    const [coords, setCoords] = useState(null) // { lat, lon }
 
     const handleSetLocation = () => {
         if (!navigator.geolocation) {
@@ -18,9 +19,11 @@ function Report() {
         }
         navigator.geolocation.getCurrentPosition(
             (pos) => {
-                const lat = pos.coords.latitude.toFixed(6)
-                const lng = pos.coords.longitude.toFixed(6)
-                setLocation(`${lat}, ${lng}`)
+          // store numeric coords and formatted string (lat, lon)
+          const lat = Number(pos.coords.latitude.toFixed(6))
+          const lon = Number(pos.coords.longitude.toFixed(6))
+          setCoords({ lat, lon })
+          setLocationStr(`${lat}, ${lon}`)
             },
             () => {
                 alert('Unable to retrieve your location')
@@ -133,14 +136,44 @@ function Report() {
                         className="report_location_input"
                         type="text"
                         name="location"
-                        placeholder="Location..."
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
+                        placeholder="Latitude, Longitude (e.g. 6.9271, 79.8612)"
+                        value={locationStr}
+                        onChange={(e) => {
+                          const v = e.target.value
+                          setLocationStr(v)
+                          // try parsing numeric coords from typed value
+                          const m = v.match(/^\s*([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)\s*$/)
+                          if (m) {
+                            const lat = Number(m[1])
+                            const lon = Number(m[2])
+                            if (!Number.isNaN(lat) && !Number.isNaN(lon)) setCoords({ lat, lon })
+                          } else {
+                            setCoords(null)
+                          }
+                        }}
                         required
                       />
                       <button type="button" className="report_set_location_btn" onClick={handleSetLocation}>
                         Set Location
                       </button>
+                      </div>
+                    <div className="report_location_meta">
+                      {coords ? (
+                        <div>
+                          <div className="coords-line">Lat: <strong>{coords.lat.toFixed(6)}</strong>, Lon: <strong>{coords.lon.toFixed(6)}</strong> <button type="button" className="btn-small" onClick={() => navigator.clipboard?.writeText(`${coords.lat}, ${coords.lon}`)}>Copy</button></div>
+                          <div className="map-wrap">
+                            <iframe
+                              title="user-location-map"
+                              src={`https://www.openstreetmap.org/export/embed.html?bbox=${(coords.lon-0.02).toFixed(6)}%2C${(coords.lat-0.02).toFixed(6)}%2C${(coords.lon+0.02).toFixed(6)}%2C${(coords.lat+0.02).toFixed(6)}&layer=mapnik&marker=${coords.lat.toFixed(6)}%2C${coords.lon.toFixed(6)}`}
+                              style={{ border: 0 }}
+                              loading="lazy"
+                            />
+                            <div className="map-link"><a href={`https://www.openstreetmap.org/?mlat=${coords.lat}&mlon=${coords.lon}#map=15/${coords.lat}/${coords.lon}`} target="_blank" rel="noopener noreferrer">Open larger map</a></div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="muted">No valid coordinates parsed. Allow location or enter manually as "lat, lon".</div>
+                      )}
                     </div>
                   </td>
                 </tr>
