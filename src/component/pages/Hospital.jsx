@@ -1,0 +1,105 @@
+import React, { useEffect, useState } from 'react'
+import Navbar from '../navigation/Navbar'
+import './Hospital.css'
+
+const HOSPITALS = [
+  { id: 1, name: 'Colombo General Hospital', lat: 6.9000, lon: 79.8567, phone: '+94112345678', antivenomStock: 0 },
+  { id: 2, name: 'Kandy Teaching Hospital', lat: 7.2906, lon: 80.6337, phone: '+94771234567', antivenomStock: 6 },
+  { id: 3, name: 'Galle General Hospital', lat: 6.0535, lon: 80.2210, phone: '+94771234568', antivenomStock: 2 },
+  { id: 4, name: 'Jaffna Teaching Hospital', lat: 9.6615, lon: 80.0255, phone: '+94771234569', antivenomStock: 0 },
+  { id: 5, name: 'Matara District Hospital', lat: 5.9484, lon: 80.5359, phone: '+94771234570', antivenomStock: 1 }
+]
+
+// Haversine distance (km)
+function haversineDistance(lat1, lon1, lat2, lon2) {
+  const toRad = (v) => (v * Math.PI) / 180
+  const R = 6371 // km
+  const dLat = toRad(lat2 - lat1)
+  const dLon = toRad(lon2 - lon1)
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+  return R * c
+}
+
+export default function Hospital() {
+  const [userPos, setUserPos] = useState(null)
+  const [error, setError] = useState(null)
+  const [nearest, setNearest] = useState(null)
+  const [nearestWithStock, setNearestWithStock] = useState(null)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    // Try to get user's location automatically
+    setLoading(true)
+    if (!navigator.geolocation) {
+      setError('Geolocation is not supported by your browser.')
+      setLoading(false)
+      return
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const coords = { lat: pos.coords.latitude, lon: pos.coords.longitude }
+        setUserPos(coords)
+        setLoading(false)
+      },
+      (err) => {
+        setError('Unable to retrieve your location. Please allow location access or enter manually.')
+        setLoading(false)
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    )
+  }, [])
+
+  useEffect(() => {
+    if (!userPos) return
+    // compute nearest and nearest with stock
+    const withDistances = HOSPITALS.map((h) => ({
+      ...h,
+      distanceKm: haversineDistance(userPos.lat, userPos.lon, h.lat, h.lon)
+    }))
+    withDistances.sort((a, b) => a.distanceKm - b.distanceKm)
+    setNearest(withDistances[0])
+    const stocked = withDistances.find((h) => h.antivenomStock > 0)
+    setNearestWithStock(stocked || null)
+  }, [userPos])
+
+  const refreshLocation = () => {
+    setError(null)
+    setLoading(true)
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setUserPos({ lat: pos.coords.latitude, lon: pos.coords.longitude })
+        setLoading(false)
+      },
+      (err) => {
+        setError('Unable to retrieve your location. Please allow location access or enter manually.')
+        setLoading(false)
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    )
+  }
+
+  const openDirections = (lat, lon) => `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`
+
+  const getOsmEmbed = (lat, lon) => {
+    const delta = 0.03
+    const left = lon - delta
+    const right = lon + delta
+    const top = lat + delta
+    const bottom = lat - delta
+    return `https://www.openstreetmap.org/export/embed.html?bbox=${left}%2C${bottom}%2C${right}%2C${top}&layer=mapnik&marker=${lat}%2C${lon}`
+  }
+
+  const getOsmLink = (lat, lon) => `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=14/${lat}/${lon}`
+
+  const copyCoords = (lat, lon) => {
+    const text = `Lat: ${lat.toFixed(5)}, Lon: ${lon.toFixed(5)}`
+    navigator.clipboard?.writeText(text)
+  }
+
+  return (
+    <div className="hospital-page page-wrap">
+      <Navbar />
+  )
+}
