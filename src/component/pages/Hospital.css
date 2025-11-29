@@ -110,3 +110,12 @@
   color:white; 
   border:none 
 }
+.btn.ghost{ 
+  background:transparent; 
+  border:1px solid rgba(6,95,70,0.08) 
+}
+.btn.emergency{ 
+  background:linear-gradient(90deg,#ef4444,#dc2626); 
+  color:white; 
+  font-weight:800 
+}
