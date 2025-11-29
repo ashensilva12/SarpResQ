@@ -42,6 +42,20 @@
   box-shadow:0 10px 30px rgba(6,95,70,0.05) 
 }
 .muted{ color:#4b6f5a }
-.error{ color:#8b1c1c; 
+.error{ 
+  color:#8b1c1c; 
   font-weight:600 
+}
+.hospital-card{ 
+  display:flex; 
+  justify-content:space-between; 
+  gap:12px; 
+  align-items:center 
+}
+.card-elevate{ 
+  transition:transform .18s ease, box-shadow .18s ease 
+}
+.card-elevate:hover{ 
+  transform:translateY(-6px); 
+  box-shadow:0 20px 40px rgba(6,95,70,0.08) 
 }
