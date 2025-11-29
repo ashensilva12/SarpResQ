@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function Navbar() {
   const [open, setOpen] = useState(false)
@@ -11,7 +11,12 @@ function Navbar() {
     <div>
       <div className="navbar">
         <ul className="navlogo">
-          <li className="logo"><span style={{ color: '#d1fae5' }}>S</span>arp<span style={{ color: '#d1fae5' }}>R</span>esQ</li>
+          <li className="logo">
+            <Link to="/" className="brand-link" onClick={close}>
+              <span className="logo-word">Sarp<span className="logo-accent">ResQ</span></span>
+              <span className="logo-sub">Protecting lives & nature</span>
+            </Link>
+          </li>
         </ul>
 
         <button
@@ -24,12 +29,12 @@ function Navbar() {
         </button>
 
         <ul className={`navlinks ${open ? 'open' : ''}`}>
-          <li className="active"><Link to="/Home" onClick={close}>Home</Link></li>
-          <li className="active"><Link to="/Report" onClick={close}>Report</Link></li>
-          <li className="active"><Link to="/Categories" onClick={close}>Categories</Link></li>
-          <li className="active"><Link to="/Hospital" onClick={close}>Hospital</Link></li>
-          <li className="active"><Link to="/Contact" onClick={close}>Contact</Link></li>
-          <li className="active"><Link to="/About" onClick={close}>About</Link></li>
+          <li><NavLink to="/Home" className={({isActive}) => isActive ? 'current' : ''} onClick={close}>Home</NavLink></li>
+          <li><NavLink to="/Report" className={({isActive}) => isActive ? 'current' : ''} onClick={close}>Report</NavLink></li>
+          <li><NavLink to="/Categories" className={({isActive}) => isActive ? 'current' : ''} onClick={close}>Categories</NavLink></li>
+          <li><NavLink to="/Hospital" className={({isActive}) => isActive ? 'current' : ''} onClick={close}>Hospital</NavLink></li>
+          <li><NavLink to="/Contact" className={({isActive}) => isActive ? 'current' : ''} onClick={close}>Contact</NavLink></li>
+          <li><NavLink to="/About" className={({isActive}) => isActive ? 'current' : ''} onClick={close}>About</NavLink></li>
         </ul>
       </div>
 
