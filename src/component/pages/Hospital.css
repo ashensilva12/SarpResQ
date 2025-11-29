@@ -1,3 +1,8 @@
 .hospital-page{ 
   font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial; color:#0f3b2b;
 }
+.hospital-hero{ 
+  background: linear-gradient(135deg, rgba(11,122,26,0.06), rgba(16,185,129,0.02)); 
+  padding:28px 20px;
+  margin-bottom:18px;
+}
