@@ -27,3 +27,11 @@
 .controls{ display:flex; gap:10px; 
   margin-top:8px 
 }
+.hospital-content{ 
+  display:grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap:18px; 
+  max-width:1200px; 
+  margin:18px auto; 
+  padding:0 12px 
+}
