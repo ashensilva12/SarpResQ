@@ -85,3 +85,11 @@
   display:inline-block; 
   font-weight:700 
 }
+.antivenom.in{ 
+  background:linear-gradient(90deg,#ecfdf5,#f0fff9); 
+  color:#065f46 
+}
+.antivenom.out{ 
+  background:#fff5f5; 
+  color:#7f1d1d 
+}
