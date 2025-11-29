@@ -35,3 +35,9 @@
   margin:18px auto; 
   padding:0 12px 
 }
+.panel{ 
+  background:#fff; 
+  border-radius:12px; 
+  padding:16px; 
+  box-shadow:0 10px 30px rgba(6,95,70,0.05) 
+}
