@@ -9,3 +9,14 @@
 .hospital-hero h1{ 
   margin:0; font-size:1.9rem; color:#08391d 
 }
+.hospital-hero .lead{ 
+  margin:8px 0 12px 0; 
+  color:#1d5f44; 
+}
+.hero-inner{ 
+  display:flex; align-items:center; 
+  justify-content:space-between; gap:18px;
+   max-width:1200px; 
+   margin:0 auto;
+}
+.hero-text{ flex:1 }
