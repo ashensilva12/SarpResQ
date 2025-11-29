@@ -93,3 +93,20 @@
   background:#fff5f5; 
   color:#7f1d1d 
 }
+.hospital-actions{ 
+  display:flex; 
+  gap:8px 
+}
+.btn{ 
+  padding:8px 12px; 
+  border-radius:8px; 
+  background:#f3fff4; 
+  border:1px solid rgba(6,95,70,0.06); 
+  color:#064e34; text-decoration:none; 
+  cursor:pointer 
+}
+.btn.primary{ 
+  background:linear-gradient(90deg,#16a34a,#0ea5a0); 
+  color:white; 
+  border:none 
+}
