@@ -66,3 +66,22 @@
   justify-content:center 
 }
 .hospital-main{ flex:1 }
+.hospital-name{ 
+  font-weight:800; 
+  color:#06391f; 
+  font-size:1.05rem 
+}
+.hospital-distance{ color:#2f6b50; 
+  margin-top:6px 
+}
+.hospital-phone a{ 
+  color:#0b7a1a; 
+  text-decoration:none 
+}
+.antivenom{ 
+  margin-top:10px; 
+  padding:8px 10px; 
+  border-radius:8px; 
+  display:inline-block; 
+  font-weight:700 
+}
