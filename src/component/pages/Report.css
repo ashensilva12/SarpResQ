@@ -136,21 +136,28 @@
 	width: auto;
 }
 .report_set_location_btn{
-	background: var(--brand);
+	background: linear-gradient(90deg, #059669 0%, #16a34a 100%);
 	color: #fff;
 	border: none;
 	border-radius: 999px;
 	padding: 10px 14px;
 	font-weight: 700;
 	cursor: pointer;
+	box-shadow: 0 6px 18px rgba(5,83,46,0.12);
+	transition: filter .14s ease, transform .12s ease, box-shadow .12s ease;
 }
 .report_set_location_btn:hover{ 
-	background: var(--brand-dark); 
+	filter: brightness(0.95);
+	transform: translateY(-1px);
+}
+.report_set_location_btn:focus{
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(5,150,90,0.12);
 }
 .report_submit {
 	display: inline-block;
 	width: 100%;
-	background: var(--brand);
+	background: linear-gradient(90deg, #059669 0%, #16a34a 100%);
 	color: #fff;
 	border: none;
 	border-radius: 999px;
@@ -160,7 +167,12 @@
 	cursor: pointer;
 }
 .report_submit:hover {
-	background: var(--brand-dark);
+	filter: brightness(0.95);
+	transform: translateY(-1px);
+}
+.report_submit:focus{
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(5,150,90,0.12);
 }
 .report_table tr:last-child td { 
 	text-align: center; 
