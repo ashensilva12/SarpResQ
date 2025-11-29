@@ -41,3 +41,7 @@
   padding:16px; 
   box-shadow:0 10px 30px rgba(6,95,70,0.05) 
 }
+.muted{ color:#4b6f5a }
+.error{ color:#8b1c1c; 
+  font-weight:600 
+}
