@@ -11,7 +11,7 @@ function Navbar() {
     <div>
       <div className="navbar">
         <ul className="navlogo">
-          <li className="logo"><span style={{ color: 'tomato' }}>S</span>arp<span style={{ color: 'tomato' }}>R</span>esQ</li>
+          <li className="logo"><span style={{ color: '#d1fae5' }}>S</span>arp<span style={{ color: '#d1fae5' }}>R</span>esQ</li>
         </ul>
 
         <button
