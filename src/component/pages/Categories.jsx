@@ -109,7 +109,14 @@ function Categories() {
               <div className="snake-scientific">{snake.scientific.replace(/_/g, ' ')}</div>
               <div className="snake-details">{snake.details}</div>
               <div className="snake-actions">
-                <button className="btn-view">Learn more</button>
+                <a
+                  className="btn-view"
+                  href={`https://en.wikipedia.org/wiki/${encodeURIComponent(snake.scientific)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn more
+                </a>
               </div>
             </div>
           ))}
