@@ -8,6 +8,8 @@ import Home from './component/pages/Home'
 import Report from './component/pages/Report'
 import Categories from './component/pages/Categories'
 import Hospital from './component/pages/Hospital'
+import Contact from './component/pages/Contact'
+import About from './component/pages/About'
 import { BrowserRouter as Router,Routes,Route }from 'react-router-dom';
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route path="/Report" element={<Report/>} />
           <Route path="/Categories" element={<Categories/>} />
           <Route path="/Hospital" element={<Hospital/>} />
+          <Route path="/Contact" element={<Contact/>} />
+          <Route path="/About" element={<About/>} />
         </Routes>
       </div>    
     </Router>
