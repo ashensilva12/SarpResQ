@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Navbar from '../navigation/Navbar'
 import './Hospital.css'
 
@@ -27,6 +27,7 @@ export default function Hospital() {
   const [nearest, setNearest] = useState(null)
   const [nearestWithStock, setNearestWithStock] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [sortedHospitals, setSortedHospitals] = useState(HOSPITALS)
 
   useEffect(() => {
     // Try to get user's location automatically
@@ -62,6 +63,7 @@ export default function Hospital() {
     setNearest(withDistances[0])
     const stocked = withDistances.find((h) => h.antivenomStock > 0)
     setNearestWithStock(stocked || null)
+    setSortedHospitals(withDistances)
   }, [userPos])
 
   const refreshLocation = () => {
@@ -98,140 +100,229 @@ export default function Hospital() {
     navigator.clipboard?.writeText(text)
   }
 
+  const stats = useMemo(() => {
+    const withStock = HOSPITALS.filter((h) => h.antivenomStock > 0).length
+    const total = HOSPITALS.length
+    return {
+      total,
+      withStock,
+      withoutStock: total - withStock
+    }
+  }, [])
+
+  const coverage = stats.total ? Math.round((stats.withStock / stats.total) * 100) : 0
+
+  const locationStatus = userPos ? 'Coordinates locked' : loading ? 'Detecting location…' : 'Location not available'
+  const locationTone = userPos ? 'success' : error ? 'alert' : 'muted'
+
   return (
-    <div className="hospital-page page-wrap">
+    <div className="hospital_page">
       <Navbar />
-
-      <section className="hospital-hero">
-        <div className="hero-inner">
-          <div className="hero-text">
-            <h1>Nearest Hospitals & Antivenom Stock</h1>
-            <p className="lead">When someone is bitten by a snake, get to a hospital quickly. This page finds nearby hospitals and shows antivenom availability.</p>
-            <div className="controls">
-              <button className="btn" onClick={refreshLocation} disabled={loading}>Refresh location</button>
-              <button className="btn ghost" onClick={() => { window.location.reload() }}>Reload App</button>
+      <main className="hospital_main">
+        <section className="hospital_hero">
+          <div className="hero_overlay" aria-hidden="true"></div>
+          <div className="hero_content">
+            <div className="hero_copy">
+              <span className="hero_badge">Emergency ready</span>
+              <h1>Find antivenom-ready care in minutes</h1>
+              <p>Share live hospital intelligence with first responders. Detect your location, confirm antivenom stock, and start directions without losing time.</p>
+              <div className="hero_actions">
+                <button className="btn primary" onClick={refreshLocation} disabled={loading}>
+                  {loading ? 'Locating…' : 'Refresh location'}
+                </button>
+                <button className="btn secondary" onClick={() => window.location.reload()}>
+                  Reload app
+                </button>
+              </div>
+              <p className="hero_hint">Tip: keep location services enabled so rescues can dispatch to the closest antivenom stock.</p>
             </div>
+            <aside className="hero_stats">
+              <div className="stat_card">
+                <span className="stat_label">Hospitals monitored</span>
+                <span className="stat_num">{stats.total}</span>
+                <span className="stat_meta">Island-wide network</span>
+              </div>
+              <div className="stat_card">
+                <span className="stat_label">Antivenom ready</span>
+                <span className="stat_num">{stats.withStock}</span>
+                <span className="stat_meta">{coverage}% coverage</span>
+              </div>
+              <div className="stat_card highlight">
+                <span className="stat_label">Nearest supply</span>
+                <span className="stat_num">{nearestWithStock ? nearestWithStock.name : 'Awaiting location'}</span>
+                <span className="stat_meta">
+                  {nearestWithStock && typeof nearestWithStock.distanceKm === 'number'
+                    ? `${nearestWithStock.distanceKm.toFixed(1)} km away`
+                    : 'Allow access to see distance'}
+                </span>
+              </div>
+            </aside>
           </div>
+        </section>
 
-          <div className="hero-visual" aria-hidden>
-            <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1">
-                  <stop offset="0" stopColor="#34d399" />
-                  <stop offset="1" stopColor="#06b6d4" />
-                </linearGradient>
-              </defs>
-              <rect x="0" y="0" width="160" height="120" rx="14" fill="url(#g1)" opacity="0.12" />
-              <g transform="translate(18,20)">
-                <circle cx="36" cy="24" r="18" fill="#fff" opacity="0.9" />
-                <path d="M36 14v12" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" />
-                <path d="M26 24h20" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round" />
-              </g>
-            </svg>
+        <section className="hospital_status">
+          <div className="status_pills">
+            <span className={`status_chip ${locationTone}`}>
+              <span className="chip_dot" aria-hidden="true"></span>
+              {locationStatus}
+            </span>
+            <span className="status_chip neutral">Hospitals listed: {stats.total}</span>
+            <span className="status_chip calm">Antivenom sites: {stats.withStock}</span>
           </div>
-        </div>
-      </section>
+          {error && <div className="status_message">{error}</div>}
+        </section>
 
-      <section className="hospital-content">
-        <div className="panel">
-          <h2>Your Location</h2>
-          {loading && <div className="muted">Detecting location…</div>}
-          {error && <div className="error">{error}</div>}
-          {userPos ? (
-            <div>
-              <div className="location-row">
-                <div className="location-info">Lat: {userPos.lat.toFixed(5)}, Lon: {userPos.lon.toFixed(5)}</div>
-                <div className="location-actions">
-                  <button className="btn" onClick={() => copyCoords(userPos.lat, userPos.lon)}>Copy</button>
-                  <a className="btn" href={getOsmLink(userPos.lat, userPos.lon)} target="_blank" rel="noopener noreferrer">Open map</a>
+        <section className="hospital_layout">
+          <article className="panel location_panel">
+            <header className="panel_header">
+              <div>
+                <h2>Live location</h2>
+                <p className="panel_hint">Grant GPS to surface the closest emergency room.</p>
+              </div>
+              <span className={`status_dot ${userPos ? 'online' : 'offline'}`} aria-hidden="true"></span>
+            </header>
+
+            {loading && <div className="panel_state">Detecting location…</div>}
+
+            {userPos && !loading && (
+              <div className="location_body">
+                <div className="location_meta">
+                  <div className="meta_row">
+                    <span className="meta_label">Latitude</span>
+                    <span className="meta_value">{userPos.lat.toFixed(5)}</span>
+                  </div>
+                  <div className="meta_row">
+                    <span className="meta_label">Longitude</span>
+                    <span className="meta_value">{userPos.lon.toFixed(5)}</span>
+                  </div>
+                </div>
+                <div className="location_actions">
+                  <button className="btn tertiary" onClick={() => copyCoords(userPos.lat, userPos.lon)}>Copy coordinates</button>
+                  <a className="btn secondary" href={getOsmLink(userPos.lat, userPos.lon)} target="_blank" rel="noopener noreferrer">Open map</a>
+                </div>
+                <div className="location_map">
+                  <iframe
+                    src={getOsmEmbed(userPos.lat, userPos.lon)}
+                    loading="lazy"
+                    title="Your location map"
+                  ></iframe>
                 </div>
               </div>
+            )}
 
-              <div className="map-embed">
-                <iframe
-                  src={getOsmEmbed(userPos.lat, userPos.lon)}
-                  style={{ border: '0' }}
-                  loading="lazy"
-                  title="Your location map"
-                ></iframe>
+            {!userPos && !loading && (
+              <div className="panel_state muted">Location not available. Enable GPS or try again above.</div>
+            )}
+          </article>
+
+          <article className="panel priority_panel">
+            <h2>Priority care</h2>
+            <div className="priority_cards">
+              <div className="priority_card">
+                <div className="priority_header">
+                  <span className="priority_badge">Closest emergency</span>
+                  <span className={`availability_badge ${nearest && nearest.antivenomStock > 0 ? 'in' : 'out'}`}>
+                    {nearest ? (nearest.antivenomStock > 0 ? 'Antivenom stocked' : 'No antivenom') : 'Pending'}
+                  </span>
+                </div>
+                {nearest ? (
+                  <div className="priority_body">
+                    <h3>{nearest.name}</h3>
+                    <p>{typeof nearest.distanceKm === 'number' ? `${nearest.distanceKm.toFixed(1)} km away` : 'Distance will appear once location is detected.'}</p>
+                    <p>Phone: <a href={`tel:${nearest.phone}`}>{nearest.phone}</a></p>
+                    <div className="priority_actions">
+                      <a className="btn primary" href={openDirections(nearest.lat, nearest.lon)} target="_blank" rel="noopener noreferrer">Get directions</a>
+                      <a className="btn secondary" href={`tel:${nearest.phone}`}>Call now</a>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="priority_placeholder">Grant location access to surface the closest facility.</div>
+                )}
+              </div>
+
+              <div className="priority_card calm">
+                <div className="priority_header">
+                  <span className="priority_badge calm">Nearest with antivenom</span>
+                  <span className="availability_badge in">{nearestWithStock ? `${nearestWithStock.antivenomStock} doses` : 'Awaiting'}</span>
+                </div>
+                {nearestWithStock ? (
+                  <div className="priority_body">
+                    <h3>{nearestWithStock.name}</h3>
+                    <p>{typeof nearestWithStock.distanceKm === 'number' ? `${nearestWithStock.distanceKm.toFixed(1)} km away` : 'Distance will appear once location is detected.'}</p>
+                    <p>Phone: <a href={`tel:${nearestWithStock.phone}`}>{nearestWithStock.phone}</a></p>
+                    <div className="priority_actions">
+                      <a className="btn primary" href={openDirections(nearestWithStock.lat, nearestWithStock.lon)} target="_blank" rel="noopener noreferrer">Navigate</a>
+                      <a className="btn secondary" href={`tel:${nearestWithStock.phone}`}>Call triage</a>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="priority_placeholder">No stocked facility detected in range yet.</div>
+                )}
               </div>
             </div>
-          ) : (
-            !loading && <div className="muted">Location not available. Allow location access or use a device with GPS.</div>
-          )}
-        </div>
+          </article>
+        </section>
 
-        <div className="panel">
-          <h2>Nearest Hospital</h2>
-          {!userPos && <div className="muted">Waiting for location…</div>}
-          {nearest && (
-            <div className="hospital-card card-elevate">
-              <div className="hospital-avatar" aria-hidden>
-                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="11" fill="#f0fff4" />
-                  <path d="M12 7v6" stroke="#059669" strokeWidth="1.6" strokeLinecap="round" />
-                  <path d="M9 10h6" stroke="#059669" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              </div>
-              <div className="hospital-main">
-                <div className="hospital-name">{nearest.name}</div>
-                <div className="hospital-distance">{nearest.distanceKm.toFixed(2)} km away</div>
-                <div className="hospital-phone">Phone: <a href={`tel:${nearest.phone}`}>{nearest.phone}</a></div>
-                <div className={`antivenom ${nearest.antivenomStock > 0 ? 'in' : 'out'}`}>
-                  {nearest.antivenomStock > 0 ? `${nearest.antivenomStock} antivenom injections in stock` : 'No antivenom in stock'}
+        <section className="hospital_directory">
+          <div className="directory_header">
+            <h2>Hospital directory</h2>
+            <p>Sorted by proximity once we locate you. Tap a card to launch directions or call ahead.</p>
+          </div>
+          <div className="directory_grid">
+            {sortedHospitals.map((hospital) => (
+              <article key={hospital.id} className="directory_card">
+                <header className="directory_title">
+                  <h3>{hospital.name}</h3>
+                  <span className={`availability_badge ${hospital.antivenomStock > 0 ? 'in' : 'out'}`}>
+                    {hospital.antivenomStock > 0 ? `${hospital.antivenomStock} doses ready` : 'Check availability'}
+                  </span>
+                </header>
+                <div className="directory_meta">
+                  <div className="meta_item">
+                    <span className="meta_label">Distance</span>
+                    <span className="meta_value">
+                      {typeof hospital.distanceKm === 'number' ? `${hospital.distanceKm.toFixed(1)} km` : 'Pending'}
+                    </span>
+                  </div>
+                  <div className="meta_item">
+                    <span className="meta_label">Phone</span>
+                    <a className="meta_value" href={`tel:${hospital.phone}`}>{hospital.phone}</a>
+                  </div>
+                </div>
+                <div className="directory_actions">
+                  <a className="btn tertiary" href={openDirections(hospital.lat, hospital.lon)} target="_blank" rel="noopener noreferrer">Directions</a>
+                  <a className="btn secondary" href={`tel:${hospital.phone}`}>Call</a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="guidance_section">
+          <h2>Immediate actions after a bite</h2>
+          <div className="guidance_grid">
+            <ol className="guidance_list">
+              <li>Move the patient to a safe area and keep them calm.</li>
+              <li>Call emergency services or the highlighted hospital immediately.</li>
+              <li>Immobilize the affected limb below heart level if possible.</li>
+              <li>Remove rings, watches, or tight clothing near the bite.</li>
+              <li>Do not cut the wound, suck the venom, or apply a tourniquet.</li>
+              <li>Record the time of the bite and, if safe, take a photo of the snake for identification.</li>
+              <li>Transport the patient to a hospital without delay—antivenom is most effective early.</li>
+            </ol>
+            <div className="guidance_cta">
+              <div className="cta_card">
+                <h3>Need urgent help?</h3>
+                <p>Alert first responders and share the live hospital card so teams prepare antivenom before you arrive.</p>
+                <div className="cta_actions">
+                  <a className="btn emergency" href="tel:119">Call emergency (119)</a>
+                  <button className="btn secondary" onClick={() => navigator.clipboard?.writeText('Patient bite timestamp: ' + new Date().toISOString())}>Copy timestamp</button>
                 </div>
               </div>
-              <div className="hospital-actions">
-                <a className="btn primary" href={openDirections(nearest.lat, nearest.lon)} target="_blank" rel="noopener noreferrer">Directions</a>
-                <a className="btn" href={`tel:${nearest.phone}`}>Call</a>
-              </div>
             </div>
-          )}
-        </div>
-
-        <div className="panel">
-          <h2>Nearest Hospital With Antivenom</h2>
-          {nearestWithStock ? (
-            <div className="hospital-card card-elevate">
-              <div className="hospital-avatar" aria-hidden>
-                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="11" fill="#fffaf0" />
-                  <path d="M9 12h6" stroke="#b45309" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              </div>
-              <div className="hospital-main">
-                <div className="hospital-name">{nearestWithStock.name}</div>
-                <div className="hospital-distance">{nearestWithStock.distanceKm.toFixed(2)} km away</div>
-                <div className="hospital-phone">Phone: <a href={`tel:${nearestWithStock.phone}`}>{nearestWithStock.phone}</a></div>
-                <div className="antivenom in">{nearestWithStock.antivenomStock} antivenom injections in stock</div>
-              </div>
-              <div className="hospital-actions">
-                <a className="btn primary" href={openDirections(nearestWithStock.lat, nearestWithStock.lon)} target="_blank" rel="noopener noreferrer">Directions</a>
-                <a className="btn" href={`tel:${nearestWithStock.phone}`}>Call</a>
-              </div>
-            </div>
-          ) : (
-            <div className="muted">No nearby hospital with antivenom found in dataset.</div>
-          )}
-        </div>
-      </section>
-
-      <section className="what-to-do">
-        <h2>What to do if bitten</h2>
-        <ol>
-          <li>Stay calm and move the person away from the snake to a safe area.</li>
-          <li>Call emergency services or the hospital shown above immediately.</li>
-          <li>Keep the affected limb immobilized and below heart level if possible.</li>
-          <li>Remove jewelry or tight clothing near the bite (swelling may occur).</li>
-          <li>Do not cut the wound, suck the venom, or apply a tourniquet.</li>
-          <li>If possible, note the time of the bite and take a photo of the snake only if it is safe to do so.</li>
-          <li>Get to the nearest hospital quickly — antivenom may be time-sensitive.</li>
-        </ol>
-        <div className="cta-row">
-          <a className="btn emergency" href="tel:119">Call Emergency (119)</a>
-          <button className="btn" onClick={() => navigator.clipboard?.writeText('Patient bit time: ' + new Date().toISOString())}>Copy timestamp</button>
-        </div>
-      </section>
+          </div>
+        </section>
+      </main>
     </div>
   )
 }
