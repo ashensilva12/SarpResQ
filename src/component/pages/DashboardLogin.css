@@ -1,0 +1,125 @@
+.dash_login_page {
+  min-height: 100vh;
+  background: radial-gradient(circle at 12% 0%, rgba(59, 130, 246, 0.14), transparent 34%),
+    radial-gradient(circle at 84% 6%, rgba(124, 58, 237, 0.14), transparent 34%),
+    linear-gradient(180deg, #f8fbff 0%, #eef2ff 100%);
+}
+
+.dash_login_main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 90px 24px 64px;
+}
+
+.dash_login_card {
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 24px 72px rgba(15, 23, 42, 0.12);
+}
+
+.dash_login_intro {
+  padding: 34px;
+  background: linear-gradient(150deg, rgba(59, 130, 246, 0.14), rgba(124, 58, 237, 0.12));
+}
+
+.dash_login_badge {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4338ca;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.dash_login_intro h1 {
+  margin: 12px 0 10px;
+  color: #0f172a;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.06;
+}
+
+.dash_login_intro p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.62;
+}
+
+.dash_login_intro ul {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.dash_login_intro li {
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  color: #334155;
+}
+
+.dash_login_form {
+  padding: 32px;
+  display: grid;
+  align-content: center;
+  gap: 9px;
+}
+
+.dash_login_form h2 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.dash_login_form p {
+  margin: 0 0 2px;
+  color: #64748b;
+}
+
+.dash_login_form label {
+  margin-top: 4px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.dash_login_form input {
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  border-radius: 12px;
+  padding: 11px 12px;
+  font: inherit;
+}
+
+.dash_login_form button {
+  margin-top: 10px;
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(120deg, #2563eb, #4f46e5);
+  cursor: pointer;
+}
+
+.back_link {
+  margin-top: 2px;
+  text-align: center;
+  color: #4338ca;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media (max-width: 920px) {
+  .dash_login_card {
+    grid-template-columns: 1fr;
+  }
+}
