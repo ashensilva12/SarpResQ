@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from '../navigation/Navbar'
+// import Navbar from '../navigation/Navbar'
 import './Dashboard.css'
 
 function Dashboard() {
   return (
     <div className="dashboard_page">
-      <Navbar />
+
       <main className="dashboard_main">
         <section className="dash_head">
           <div>

@@ -1,8 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
+    const navigate = useNavigate()
+    const [form, setForm] = useState({ email: '', password: '' })
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [error, setError] = useState('')
+
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'
+
+    const onChange = (e) => {
+        const { name, value } = e.target
+        setForm((prev) => ({ ...prev, [name]: value }))
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        setError('')
+        setIsSubmitting(true)
+
+        try {
+            const response = await fetch(`${API_BASE}/api/user/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: form.email.trim(),
+                    password: form.password
+                })
+            })
+
+            const data = await response.json().catch(() => ({}))
+
+            if (!response.ok) {
+                setError(data.message || 'Login failed. Please check your credentials.')
+                return
+            }
+
+            localStorage.setItem('sarpresqToken', data.token)
+            localStorage.setItem('sarpresqUser', JSON.stringify(data.user))
+            navigate('/Home')
+        } catch {
+            setError('Unable to reach server. Please make sure backend is running.')
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
     return (
         <div className="login_page">
             <div className="login_wrap">
@@ -18,15 +62,33 @@ function Login() {
                     </ul>
                 </div>
 
-                <form className="login_form">
+                <form className="login_form" onSubmit={onSubmit}>
                     <h2>Login</h2>
                     <p>Use your SarpResQ account credentials to continue.</p>
 
                     <label htmlFor="loginEmail">Email</label>
-                    <input id="loginEmail" type="email" name="username" placeholder="you@example.com" required />
+                    <input
+                        id="loginEmail"
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={onChange}
+                        placeholder="you@example.com"
+                        required
+                    />
 
                     <label htmlFor="loginPassword">Password</label>
-                    <input id="loginPassword" type="password" name="password" placeholder="Enter your password" required />
+                    <input
+                        id="loginPassword"
+                        type="password"
+                        name="password"
+                        value={form.password}
+                        onChange={onChange}
+                        placeholder="Enter your password"
+                        required
+                    />
+
+                    {error ? <p className="login_note" role="alert">{error}</p> : null}
 
                     <div className="login_row">
                         <span>Secure access enabled</span>
@@ -34,7 +96,9 @@ function Login() {
                     </div>
 
                     <div className="login_cta">
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                            {isSubmitting ? 'Logging in...' : 'Login'}
+                        </button>
                         <Link to="/dashboard-login" className="btn btn-soft">Explore dashboard</Link>
                     </div>
 

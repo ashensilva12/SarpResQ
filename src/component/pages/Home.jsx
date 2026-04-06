@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../navigation/Navbar'
-import heroIllustration from '../../assets/snake-hero.svg'
+import heroIllustration from '../../assets/b1.png'
 import './Home.css'
 
 function Home() {
@@ -39,7 +39,11 @@ function Home() {
 
                         <div className="hero_visual">
                             <div className="visual_media">
-                                <img src={heroIllustration} alt="Stylised illustration of a coiled snake" />
+                                <img 
+                                    src={heroIllustration} 
+                                    alt="Boy bitten by snake - safety awareness" 
+                                    style={{ background: '#fff', border: '2px solid #1e3a8a', borderRadius: '20px' }}
+                                />
                             </div>
                             <div className="visual_annotation">
                                 <h3>Average 3-minute assignment</h3>
@@ -176,10 +180,10 @@ function Home() {
                 </section>
 
                 <section className="home_cta">
-                    <div className="cta_card">
+                    <div className="home_cta_card">
                         <h2>Bring safety training to your community</h2>
                         <p>Schedule awareness workshops, collaborate with district teams, or support local preparedness programs.</p>
-                        <div className="cta_actions">
+                        <div className="home_cta_actions">
                             <Link to="/Contact" className="btn btn-primary">Book a workshop</Link>
                             <Link to="/About" className="btn btn-ghost">Learn how we work</Link>
                         </div>

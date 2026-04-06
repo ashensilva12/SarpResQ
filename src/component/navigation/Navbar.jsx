@@ -37,6 +37,7 @@ function Navbar() {
   const closeAccount = () => setAccountOpen(false)
 
   const handleLogout = () => {
+    localStorage.removeItem('sarpresqToken')
     localStorage.removeItem('sarpresqUser')
     localStorage.removeItem('sarpresqDashboardAuth')
     sessionStorage.removeItem('sarpresqUser')

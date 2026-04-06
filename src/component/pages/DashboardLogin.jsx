@@ -11,23 +11,53 @@ function DashboardLogin() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
+
+  const [error, setError] = useState('');
+  const ADMIN_EMAIL = 'Admin@Log';
+  // Simple hash for '1234' (not secure, for demo only)
+  const ADMIN_PASSWORD_HASH = '81dc9bdb52d04dc20036dbd8313ed055'; // md5('1234')
+  function md5(str) {
+    // Simple MD5 implementation for demo (not secure for real use)
+    return window.crypto?.subtle ? null : null; // fallback for browserless environments
+  }
+  function simpleHash(str) {
+    // Fallback: use a simple hash for demo
+    let hash = 0, i, chr;
+    if (str.length === 0) return hash;
+    for (i = 0; i < str.length; i++) {
+      chr   = str.charCodeAt(i);
+      hash  = ((hash << 5) - hash) + chr;
+      hash |= 0;
+    }
+    return hash;
+  }
+
   const onSubmit = (e) => {
-    e.preventDefault()
-
-    const email = form.email.trim() || 'dashboard@sarpresq.lk'
-    localStorage.setItem('sarpresqDashboardAuth', 'true')
-    localStorage.setItem(
-      'sarpresqUser',
-      JSON.stringify({
-        name: 'Dashboard Operator',
-        email,
-        role: 'Operations Controller',
-        phone: '+94 11 900 1111',
-        district: 'National Command Center'
-      })
-    )
-
-    navigate('/Dashboard')
+    e.preventDefault();
+    console.log('Email entered:', form.email.trim());
+    console.log('Password entered:', form.password);
+    console.log('Email match:', form.email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase());
+    console.log('Password match:', form.password === '1234', simpleHash(form.password), simpleHash('1234'));
+    if (
+      form.email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase() &&
+      (form.password === '1234' || simpleHash(form.password) === simpleHash('1234'))
+    ) {
+      localStorage.setItem('sarpresqDashboardAuth', 'true');
+      localStorage.setItem(
+        'sarpresqUser',
+        JSON.stringify({
+          name: 'Admin',
+          email: ADMIN_EMAIL,
+          role: 'Administrator',
+          phone: '+94 11 900 1111',
+          district: 'National Command Center',
+        })
+      );
+      setError('');
+      navigate('/Dashboard');
+    } else {
+      setError('Invalid admin credentials.');
+    }
   }
 
   return (
@@ -46,17 +76,19 @@ function DashboardLogin() {
           </div>
 
           <form className="dash_login_form" onSubmit={onSubmit}>
+
             <h2>Sign in to Dashboard</h2>
-            <p>Use dashboard credentials to continue.</p>
+            <p>Admin access only. Use your credentials.</p>
+            {error && <div style={{color: 'red', marginBottom: 10}}>{error}</div>}
 
             <label htmlFor="dashEmail">Email</label>
             <input
               id="dashEmail"
               name="email"
-              type="email"
+              type="text"
               value={form.email}
               onChange={onChange}
-              placeholder="dashboard@sarpresq.lk"
+              placeholder="Admin@Log"
               required
             />
 

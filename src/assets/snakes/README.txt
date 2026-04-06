@@ -1,1 +1,0 @@
-Place snake photos here. Filenames should match the snake's common name in lowercase, spaces replaced with underscores (e.g., russells_viper.jpg).
